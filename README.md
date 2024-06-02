@@ -54,4 +54,4 @@ In the envisioned system, students are empowered to navigate their academic jour
 - Bui The Trung (TrungBui32)
 - Ngo Duc Anh (NikiNgoDa_NUSCS)
 
-![Test-hompage](./Front-end/src/assets/test-homepage.png)
+![Test-hompage](./Front-end/src/assets/login-page.png)
