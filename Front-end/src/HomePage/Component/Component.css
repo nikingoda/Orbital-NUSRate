@@ -1,0 +1,62 @@
+.course-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 1px;
+  background-color: rgba(20, 20, 20, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 470px;
+}
+
+.course-name {
+  font-size: 24px;
+  color: rgb(28, 24, 24);
+}
+
+.course-code {
+  font-size: 30px;
+  color: #ff7900;
+}
+
+.professor-name {
+  color: #555;
+}
+
+.course-description {
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.course-rating {
+  align-items: left;
+  color: rgb(28, 24, 24);
+}
+
+.star-filled {
+  color: #ffcc00;
+}
+
+.star-empty {
+  color: #ccc;
+}
+
+.rate-button {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #ff7900;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 60px;
+}
+
+.rate-button:hover {
+  background-color: #ca640a;
+}
