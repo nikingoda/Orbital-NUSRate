@@ -9,23 +9,23 @@ const HomePage = () => {
     <div>
       <NavBar/>
       <div className="main">
-      {/* <div className="search">
-      <SearchBar />
-      </div> */}
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-      <Component />
-    </div>
+        {/* <div className="search">
+        <SearchBar />
+        </div> */}
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+        <Component />
+      </div>
     </div>
     
   );
