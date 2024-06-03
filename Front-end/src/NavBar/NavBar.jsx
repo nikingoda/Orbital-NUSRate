@@ -30,7 +30,7 @@ const NavBar = () => {
                     <a href="#">Courses</a>
                   </li>
                   <li>
-                    <a href="#">Professor</a>
+                    <a href="#">Professors</a>
                   </li>
                   <li>
                     <a className="reg-log" href="/register">
@@ -72,7 +72,7 @@ const NavBar = () => {
                     <a href="#">Courses</a>
                   </li>
                   <li>
-                    <a href="#">Professor</a>
+                    <a href="#">Professors</a>
                   </li>
                   <li onClick={logOut}>
                     <a className="reg-log" href="/login">
