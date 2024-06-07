@@ -1,0 +1,77 @@
+.rate-page {
+  margin: 100px 300px 20px 300px;
+  height: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.rate-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #053d72;
+  font-size: 40px;
+}
+
+.star-rating {
+  text-align: center;
+  margin: 10px 0px 10px 0px;
+  font-size: 50px;
+}
+.comment-field {
+  position: relative;
+}
+.comment-field textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.add-categories,
+.submit {
+  padding: 5px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: transform 0.3s ease;
+}
+
+.add-categories {
+  width: 30%;
+  background: linear-gradient(45deg, #0055a4, #ff7900);
+  display: inline-block;
+}
+
+.submit {
+  width: 100%;
+  background: linear-gradient(45deg, #ff7900, #0055a4);
+  font-size: 20px;
+  display: block;
+}
+
+.submit:hover {
+  background: linear-gradient(45deg, #0055a4, #ff7900);
+  transform: scale(1.05);
+}
+
+.add-categories:hover {
+  background: linear-gradient(45deg, #ff7900, #0055a4);
+  transform: scale(1.05);
+}
+
+.form-select {
+  display: inline-block;
+  font-size: 15px;
+  width: 50%;
+  margin: 0px 10px;
+  border-color: rgb(81, 78, 78);
+  border-radius: 5px;
+  font-size: 15px;
+}
