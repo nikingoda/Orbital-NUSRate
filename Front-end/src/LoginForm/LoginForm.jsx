@@ -26,7 +26,10 @@ function LoginForm() {
       const data = await res.json();
   
       if(res.status === 200) {
-        localStorage.setItem('token', data.accessToken);
+        localStorage.setItem('loginInfo', {
+          userID: data.id,
+          loginToken: data.accessToken
+        })
         window.alert("Login successfully");
         navigate("/");
         // history.push("/");
