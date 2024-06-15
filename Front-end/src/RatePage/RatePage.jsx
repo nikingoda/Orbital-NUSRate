@@ -53,7 +53,7 @@ const RatePage = () => {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            user: user, commonRating, review, selectedCategory, categories, date
+            user, commonRating, review, selectedCategory, categories, date
           })
         });
   
