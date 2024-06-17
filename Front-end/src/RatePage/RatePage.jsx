@@ -70,7 +70,6 @@ const RatePage = () => {
     }
   };
 
-  // TEST INFORMATION
   const courseCode = param.courseCode;
   let courseName;
   let professorNames;
