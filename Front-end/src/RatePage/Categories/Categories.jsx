@@ -44,3 +44,5 @@ const Categories = ({ categories, onRemoveCategory }) => {
 };
 
 export default Categories;
+
+
