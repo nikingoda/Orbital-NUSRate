@@ -1,7 +1,6 @@
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import HomePage from "./HomePage/HomePage";
-// import Footer from "./HomePage/Footer/Footer";
 import RatePage from "./RatePage/RatePage";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";

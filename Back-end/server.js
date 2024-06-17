@@ -1,11 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
 const data = require("./courseDetails.json");
 
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:5173"
+  origin: "http://localhost:5173",
 };
 
 app.use(cors(corsOptions));
@@ -22,8 +24,13 @@ app.get("/", (req, res) => {
 });
 
 // routes
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
+
+// Endpoint to serve courses data
+app.get("/api/course", (req, res) => {
+  res.json(data);
+});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
@@ -31,7 +38,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-const db = require("./app/models"); 
+const db = require("./app/models");
 const Role = db.role;
 const Course = db.course;
 
@@ -40,7 +47,7 @@ const dbConfig = require("./app/config/db.config");
 async function initial() {
   try {
     const count = await Role.estimatedDocumentCount().exec();
-    
+
     if (count === 0) {
       await new Role({ name: "user" }).save();
       console.log("added 'user' to roles collection");
@@ -51,12 +58,12 @@ async function initial() {
       await new Role({ name: "admin" }).save();
       console.log("added 'admin' to roles collection");
     }
-    
+
     const countCourse = await Course.estimatedDocumentCount().exec();
     if (countCourse === 0) {
       let d = app.get("https://api.nusmods.com/v2/2023-2024/moduleInfo.json");
-      for(let i of data) {
-        await new Course( {
+      for (let i of data) {
+        await new Course({
           courseCode: i.moduleCode,
           courseName: i.title,
           courseDescription: i.description,
@@ -64,12 +71,11 @@ async function initial() {
           courseCredit: i.moduleCredit,
           department: i.department,
           faculty: i.faculty,
-          gradingBasisDescription: i.gradingBasisDescription
+          gradingBasisDescription: i.gradingBasisDescription,
         }).save();
       }
     }
     console.log("number of course: " + countCourse);
-
   } catch (err) {
     console.error("Error during initialization", err);
   }
@@ -81,7 +87,7 @@ db.mongoose
     initial();
     console.log("Successfully connect to MongoDB.");
   })
-  .catch(err => {
-    console.error("Connection error!", err)
+  .catch((err) => {
+    console.error("Connection error!", err);
     process.exit();
   });
