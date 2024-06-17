@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const data = require("./courseDetails.json");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.listen(PORT, () => {
 
 const db = require("./app/models"); 
 const Role = db.role;
+const Course = db.course;
 
 const dbConfig = require("./app/config/db.config");
 
@@ -49,6 +51,25 @@ async function initial() {
       await new Role({ name: "admin" }).save();
       console.log("added 'admin' to roles collection");
     }
+    
+    const countCourse = await Course.estimatedDocumentCount().exec();
+    if (countCourse === 0) {
+      let d = app.get("https://api.nusmods.com/v2/2023-2024/moduleInfo.json");
+      for(let i of data) {
+        await new Course( {
+          courseCode: i.moduleCode,
+          courseName: i.title,
+          courseDescription: i.description,
+          professors: [],
+          courseCredit: i.moduleCredit,
+          department: i.department,
+          faculty: i.faculty,
+          gradingBasisDescription: i.gradingBasisDescription
+        }).save();
+      }
+    }
+    console.log("number of course: " + countCourse);
+
   } catch (err) {
     console.error("Error during initialization", err);
   }

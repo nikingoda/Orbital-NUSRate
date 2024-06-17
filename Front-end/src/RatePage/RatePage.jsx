@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import Categories from "./Categories/Categories";
 import "./RatePage.css";
+import { useNavigate, useParams } from "react-router-dom";
 
+const url = "http://localhost:8080";
 const RatePage = () => {
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
+  const param = useParams();
+  const navigate = useNavigate();
+  const [commonRating, setCommonRating] = useState(0);
+  const [review, setReview] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
+  const loginInfo = localStorage.getItem("loginInfo");
+  const date = new Date();
 
   const handleRatingChange = (nextValue) => {
-    setRating(nextValue);
+    setCommonRating(nextValue);
   };
 
   const handleCommentChange = (event) => {
-    setComment(event.target.value);
+    setReview(event.target.value);
   };
 
   const handleCategoryChange = (event) => {
@@ -33,20 +39,66 @@ const RatePage = () => {
     );
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      if(!loginInfo) {
+        window.alert("Please login again!");
+        navigate('/login');
+      } else {
+        const user = loginInfo.userID;
+        const res = await fetch(url + "/api/rate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            user, commonRating, review, selectedCategory, categories, date
+          })
+        });
+  
+        const data = await res.json();
+        if(res.status === 201) {
+          window.alert("Rate and review submitted successfully!");
+          navigate("/");
+        } else {
+          window.alert(data.message);
+        }
+      }
+    } catch (err) {
+      throw new Error('There has been a problem with your fetch operation:', err);
+    }
   };
 
   // TEST INFORMATION
-  const courseCode = "CS3230";
-  const courseName = "Design and Analysis of Algorithms";
-  const professorNames = [
-    "Prof. Diptarka Chakraborty",
-    "Prof. Steven Halim",
-    "Prof. Sanjay Jain",
-  ];
-  const courseDescription =
-    "This course introduces different techniques of designing and analysing algorithms. Students will learn about the framework for algorithm analysis, for example, lower bound arguments, average case analysis, and the theory of NP-completeness. In addition, students are exposed to various algorithm design paradigms. The course serves two purposes: to improve the students' ability to design algorithms in different areas, and to prepare students for the study of more advanced algorithms. The course covers lower and upper bounds, recurrences, basic algorithm paradigms (such as prune-and-search, dynamic programming, branch-and-bound, graph traversal, and randomised approaches), amortized analysis, NP-completeness, and some selected advanced topics.";
+  const courseCode = param.courseCode;
+  let courseName;
+  let professorNames;
+  let courseDescription;
+  try {
+    const course = fetch(url + "/api/course", {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      return undefined;
+    })
+
+    if(course === undefined) {
+      window.alert("Course not found!");
+      navigate("/");
+      return;
+    }
+    courseName = course.title;
+    professorNames = param.professorNames;
+    courseDescription = param.courseDescription;
+  } catch (err) {
+    throw new Error('There has been a problem with your fetch operation (Course finding):', err);
+  }
 
   return (
     <div className="rate-page">
@@ -69,14 +121,14 @@ const RatePage = () => {
           <StarRatingComponent
             name="courseRating"
             starCount={5}
-            value={rating}
+            value={commonRating}
             onStarClick={handleRatingChange}
           />
         </div>
         <div className="comment-field">
           <textarea
             placeholder="Comment"
-            value={comment}
+            value={review}
             onChange={handleCommentChange}
           />
         </div>

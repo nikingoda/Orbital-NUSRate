@@ -4,11 +4,11 @@ const NavBar = () => {
     const navigate = useNavigate();
     const verifyToken = () => {
         const currentTime = new Date().getTime() / 1000;
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('loginInfo').loginToken;
         if (!token) return false;
         const payload = JSON.parse(atob(token.split(".")[1]));
         if (currentTime > payload.exp) {
-          localStorage.removeItem("token");
+          localStorage.removeItem('loginInfo');
           return false;
         }
         return true;
@@ -50,7 +50,7 @@ const NavBar = () => {
         const logOut = async(event) => {
             event.preventDefault();
             try {
-                localStorage.removeItem("token");
+                localStorage.removeItem("loginInfo");
                 navigate('/login');
             } catch (err) {
                 console.log(err);
