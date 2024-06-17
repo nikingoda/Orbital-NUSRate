@@ -39,26 +39,38 @@ const RatePage = () => {
     );
   };
 
+  const handleUpdateRating = (category, rating) => {
+    setStoredRatings((prevRatings) => ({
+      ...prevRatings,
+      [category]: rating,
+    }));
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if(!loginInfo) {
+      if (!loginInfo) {
         window.alert("Please login again!");
-        navigate('/login');
+        navigate("/login");
       } else {
         const user = loginInfo.userID;
         const res = await fetch(url + "/api/rate", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            user, commonRating, review, selectedCategory, categories, date
-          })
+            user,
+            commonRating,
+            review,
+            selectedCategory,
+            categories,
+            date,
+          }),
         });
-  
+
         const data = await res.json();
-        if(res.status === 201) {
+        if (res.status === 201) {
           window.alert("Rate and review submitted successfully!");
           navigate("/");
         } else {
@@ -66,7 +78,10 @@ const RatePage = () => {
         }
       }
     } catch (err) {
-      throw new Error('There has been a problem with your fetch operation:', err);
+      throw new Error(
+        "There has been a problem with your fetch operation:",
+        err
+      );
     }
   };
 
@@ -78,16 +93,16 @@ const RatePage = () => {
     const course = fetch(url + "/api/course", {
       method: "GET",
       headers: {
-        'Accept': 'application/json'
-      }
-    }).then(res => {
-      if(res.status === 200) {
+        Accept: "application/json",
+      },
+    }).then((res) => {
+      if (res.status === 200) {
         return res.json();
       }
       return undefined;
-    })
+    });
 
-    if(course === undefined) {
+    if (course === undefined) {
       window.alert("Course not found!");
       navigate("/");
       return;
@@ -96,7 +111,10 @@ const RatePage = () => {
     professorNames = param.professorNames;
     courseDescription = param.courseDescription;
   } catch (err) {
-    throw new Error('There has been a problem with your fetch operation (Course finding):', err);
+    throw new Error(
+      "There has been a problem with your fetch operation (Course finding):",
+      err
+    );
   }
 
   return (
@@ -153,7 +171,7 @@ const RatePage = () => {
           </button>
           <Categories
             categories={categories}
-            onRemoveCategory={handleRemoveCategory}
+            onUpdateRating={handleUpdateRating}
           />
         </div>
 
