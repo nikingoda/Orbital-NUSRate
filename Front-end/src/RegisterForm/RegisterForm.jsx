@@ -3,6 +3,8 @@ import { useState } from "react";
 import registerformStyles from "./RegisterForm.module.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
+
 function RegisterForm() {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
@@ -41,62 +43,65 @@ function RegisterForm() {
     }
   };
   return (
-    <div className={registerformStyles.wrapper}>
-      <form action="">
-        <h1>REGISTER</h1>
-        <div className={registerformStyles.inputbox}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <FaUser className={registerformStyles.icon} />
-        </div>
-        <div className={registerformStyles.inputbox}>
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <FaUser className={registerformStyles.icon} />
-        </div>
-        <div className={registerformStyles.inputbox}>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <FaLock className={registerformStyles.icon} />
-        </div>
-        <div className={registerformStyles.inputbox}>
-          <input
-            type="password"
-            placeholder="Password Again"
-            value={passwordAgain}
-            onChange={(e) => setPasswordAgain(e.target.value)}
-            required
-          />
-          <FaLock className={registerformStyles.icon} />
-        </div>
-        <div className={registerformStyles.registerlink}>
-          <p>
-            You already had an account? <a href="/login">Log In</a>
-          </p>
-        </div>
-        <button
-          className={registerformStyles.submit}
-          id="signup"
-          onClick={handleClick}
-        >
-          Create Account
-        </button>
-      </form>
+    <div className={registerformStyles.container}>
+      <NavBar/>
+      <div className={registerformStyles.wrapper}>
+        <form action="">
+          <h1>REGISTER</h1>
+          <div className={registerformStyles.inputbox}>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <FaUser className={registerformStyles.icon} />
+          </div>
+          <div className={registerformStyles.inputbox}>
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <FaUser className={registerformStyles.icon} />
+          </div>
+          <div className={registerformStyles.inputbox}>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <FaLock className={registerformStyles.icon} />
+          </div>
+          <div className={registerformStyles.inputbox}>
+            <input
+              type="password"
+              placeholder="Password Again"
+              value={passwordAgain}
+              onChange={(e) => setPasswordAgain(e.target.value)}
+              required
+            />
+            <FaLock className={registerformStyles.icon} />
+          </div>
+          <div className={registerformStyles.registerlink}>
+            <p>
+              You already had an account? <a href="/login">Log In</a>
+            </p>
+          </div>
+          <button
+            className={registerformStyles.submit}
+            id="signup"
+            onClick={handleClick}
+          >
+            Create Account
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

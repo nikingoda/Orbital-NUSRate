@@ -6,7 +6,7 @@ const Contact = () => {
     <section className={contactStyles.general}>
       <NavBar/>
       <form className={contactStyles.formcontact}>
-        <h2>Contact Form</h2>
+        <h2>CONTACT FORM</h2>
         <div className={contactStyles.inputbox}>
           <label htmlFor="username">Username</label>
           <input

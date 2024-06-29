@@ -3,7 +3,6 @@ import navbarStyles from "./NavBar.module.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
-
   const verifyToken = () => {
     const currentTime = new Date().getTime() / 1000;
     const loginInfo = localStorage.getItem("loginInfo");
@@ -16,76 +15,77 @@ const NavBar = () => {
     }
     return true;
   };
-
-  const logOut = async (event) => {
-    event.preventDefault();
-    try {
-      localStorage.removeItem("loginInfo");
-      navigate("/login");
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  return (
-    <div className={navbarStyles.navbar}>
-      <div>
-        <h1 className={`${navbarStyles.logo} ${navbarStyles.NUS}`}>NUS</h1>
-        <h1 className={`${navbarStyles.logo} ${navbarStyles.Rate}`}>Rate</h1>
-      </div>
-      <ul>
-        <li>
-          <a href="/" className={navbarStyles.navlink}>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#" className={navbarStyles.navlink}>
-            About
-          </a>
-        </li>
-        <li>
-          <a href="#" className={navbarStyles.navlink}>
-            Rate
-          </a>
-        </li>
-        <li>
-          <a href="#" className={navbarStyles.navlink}>
-            Contact
-          </a>
-        </li>
-        {!verifyToken() ? (
-          <>
-            <li>
-              <a
-                href="/register"
-                className={`${navbarStyles.navlink} ${navbarStyles.reglog}`}
-              >
-                Register
-              </a>
-            </li>
-            <li>
-              <a
-                href="/login"
-                className={`${navbarStyles.navlink} ${navbarStyles.reglog}`}
-              >
-                Login
-              </a>
-            </li>
-          </>
-        ) : (
-          <li onClick={logOut}>
-            <a
-              href="/login"
-              className={`${navbarStyles.navlink} ${navbarStyles.reglog}`}
-            >
-              Logout
+  if (!verifyToken()) {
+    return (
+      <div className={navbarStyles.navbar}>
+        <div>
+          <h1 className={`${navbarStyles.logo} ${navbarStyles.NUS}`}>NUS</h1>
+          <h1 className={`${navbarStyles.logo} ${navbarStyles.Rate}`}>Rate</h1>
+        </div>
+        <ul>
+          <li>
+            <a href="/">HOME</a>
+          </li>
+          <li>
+            <a href="#">ABOUT</a>
+          </li>
+          <li>
+            <a href="#">RATE</a>
+          </li>
+          <li>
+            <a href="#">CONTACT</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a className={navbarStyles.reglog} href="/register">
+              REGISTER
             </a>
           </li>
-        )}
-      </ul>
-    </div>
-  );
+          <li>
+            <a className={navbarStyles.reglog} href="/login">
+              LOGIN
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  } else {
+    const logOut = async (event) => {
+      event.preventDefault();
+      try {
+        localStorage.removeItem("loginInfo");
+        navigate("/login");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    return (
+      <div className={navbarStyles.navbar}>
+        <h1 className={`${navbarStyles.logo} ${navbarStyles.NUS}`}>NUS</h1>
+        <h1 className={`${navbarStyles.logo} ${navbarStyles.Rate}`}>Rate</h1>
+        <ul>
+          <li>
+            <a href="#">HOME</a>
+          </li>
+          <li>
+            <a href="#">ABOUT</a>
+          </li>
+          <li>
+            <a href="#">RATE</a>
+          </li>
+          <li>
+            <a href="#">CONTACT</a>
+          </li>
+          <li onClick={logOut}>
+            <a className={navbarStyles.reglog} href="/login">
+              LOG OUT
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  }
 };
 
 export default NavBar;

@@ -4,12 +4,6 @@
   place-content: center;
 }
 
-body {
-  background: url("../assets/NUS-ERC.jpg") no-repeat center center fixed;
-  background-size: cover;
-  background-position: center;
-}
-
 .wrapper {
   place-items: center;
   width: 420px;

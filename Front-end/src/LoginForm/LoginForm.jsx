@@ -2,6 +2,8 @@ import { useState } from "react";
 import loginformStyles from "./LoginForm.module.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
+import { div } from "three/examples/jsm/nodes/Nodes.js";
 
 const url = "http://localhost:8080/api/auth/signin";
 function LoginForm() {
@@ -46,47 +48,49 @@ function LoginForm() {
   };
 
   return (
-    <div className={loginformStyles.wrapper}>
-      <form action="">
-        <h1>LOGIN</h1>
-        <div className={loginformStyles.inputbox}>
-          <input
-            type="text"
-            placeholder="Username or Email"
-            value={usernameOrEmail}
-            onChange={(e) => setUsernameOrEmail(e.target.value)}
-            required
-          />
-          <FaUser className={loginformStyles.icon} />
-        </div>
-        <div className={loginformStyles.inputbox}>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <FaLock className={loginformStyles.icon} />
-        </div>
+    <div className={loginformStyles.container}>
+      <NavBar/>
+      <div className={loginformStyles.wrapper}>
+        <form action="">
+          <h1>LOGIN</h1>
+          <div className={loginformStyles.inputbox}>
+            <input
+              type="text"
+              placeholder="Username or Email"
+              value={usernameOrEmail}
+              onChange={(e) => setUsernameOrEmail(e.target.value)}
+              required
+            />
+            <FaUser className={loginformStyles.icon} />
+          </div>
+          <div className={loginformStyles.inputbox}>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <FaLock className={loginformStyles.icon} />
+          </div>
 
-        <div className={loginformStyles.rememberme}>
-          <label>
-            <input type="checkbox" />
-            Remember me
-          </label>
-          <a href="#">Forgot password?</a>
-        </div>
-        <button type="submit" id="login" onClick={handleClick}>
-          Login
-        </button>
-        <div className={loginformStyles.registerlink}>
-          <p>
-            Do not have an account? <a href="/register">Register</a>
-          </p>
-        </div>
-      </form>
-      <script></script>
+          <div className={loginformStyles.rememberme}>
+            <label>
+              <input type="checkbox" />
+              Remember me
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit" id="login" onClick={handleClick}>
+            Login
+          </button>
+          <div className={loginformStyles.registerlink}>
+            <p>
+              Do not have an account? <a href="/register">Register</a>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
