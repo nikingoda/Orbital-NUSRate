@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-// import {useHistory} from "react-router-dom"
 
 const url = "http://localhost:8080/api/auth/signin";
 function LoginForm() {
@@ -10,7 +9,6 @@ function LoginForm() {
   const [usernameOrEmail, setUsernameOrEmail] = useState();
   const [password, setPassword] = useState();
   const handleClick = async (event) => {
-    // const history = useHistory();
     event.preventDefault();
     try {
       const res = await fetch(url, {
@@ -26,13 +24,12 @@ function LoginForm() {
       const data = await res.json();
   
       if(res.status === 200) {
-        localStorage.setItem('loginInfo', {
+        localStorage.setItem('loginInfo', JSON.stringify({
           userID: data.id,
           loginToken: data.accessToken
-        })
+        }));
         window.alert("Login successfully");
         navigate("/");
-        // history.push("/");
       } else {
         window.alert("Login failed! " + data.message);
       }

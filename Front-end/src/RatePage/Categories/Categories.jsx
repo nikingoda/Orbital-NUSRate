@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import "./Categories.css";
 
-const Categories = (categories, onRemoveCategory) => {
+const Categories = ({categories, onRemoveCategory}) => {
   const [ratings, setRatings] = useState({});
 
   useEffect(() => {

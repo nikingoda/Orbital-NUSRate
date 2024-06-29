@@ -4,8 +4,9 @@ const NavBar = () => {
     const navigate = useNavigate();
     const verifyToken = () => {
         const currentTime = new Date().getTime() / 1000;
-        const token = localStorage.getItem('loginInfo').loginToken;
-        if (!token) return false;
+        const loginInfo = localStorage.getItem('loginInfo');
+        if (!loginInfo) return false;
+        const token = JSON.parse(loginInfo).loginToken;
         const payload = JSON.parse(atob(token.split(".")[1]));
         if (currentTime > payload.exp) {
           localStorage.removeItem('loginInfo');
@@ -21,7 +22,7 @@ const NavBar = () => {
                 <h1 className="logo Rate">Rate</h1>
                 <ul>
                   <li>
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>
                     <a href="#">About</a>

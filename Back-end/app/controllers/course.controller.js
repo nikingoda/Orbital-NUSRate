@@ -3,9 +3,10 @@ const Course = db.course;
 
 exports.course = async (req, res) => {
     try {
-        const course = Course.find({courseCode: req.body.courseCode});
+        const course = await Course.findOne({courseCode: req.query.courseCode}).exec();
         if(!course) {
             res.status(404).send({message: "Course not found!"});
+            console.log(req.query.courseCode);
         } else {
             res.status(200).send({
                 message: "Course found!", 

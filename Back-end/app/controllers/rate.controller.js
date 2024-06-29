@@ -3,9 +3,16 @@ const Rate = db.rate;
 
 exports.rate = async (req, res) => {
     try {
-        if (!req.body.user || !req.body.product || req.body.commomRating == null || req.body.review == null) {
+        if (!req.body.user && !req.body.product && req.body.commomRating == null && req.body.review == null) {
             return res.status(400).send({ message: "Content cannot be empty!" });
         }
+
+        const tmp = Rate.findOne({user: req.body.user});
+
+        if(tmp) {
+            Rate.deleteMany({user: req.body.user});
+        }
+
         const rate = new Rate({
             course: req.body.course,
             user: req.body.user,

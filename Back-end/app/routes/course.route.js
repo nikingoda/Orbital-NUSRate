@@ -1,13 +1,13 @@
 const controller = require("../controllers/course.controller");
 
 module.exports = app => {
-    app.use(function(req, res, next) {
-        res.header(
+    app.use((req, res, next) => {
+      res.header(
           "Access-Control-Allow-Headers",
           "x-access-token, Origin, Content-Type, Accept"
-        );
-        next();
+      );
+      next();
     });
 
-    app.get("/api/course", controller.course);
+    app.get("/api/getCourse", controller.course);
 }

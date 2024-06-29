@@ -5,17 +5,11 @@ import "./Component.css";
 const urlRating = "http://localhost:5173/api/submitRating";
 // const urlCourseCode="http://localhost:5173/api/moduleCode"
 
-function Component({ courseModule }) {
-  // const moduleCode = "CS3230";
-  // const title = "Design and Analysis of Algorithms";
-  // const professorNames = [
-  //   "Prof. Diptarka Chakraborty",
-  //   "Prof. Steven Halim",
-  //   "Prof. Sanjay Jain",
-  // ];
-  // const courseDescription =
-  //   "This course introduces different techniques of designing and analysing algorithms. Students will learn about the framework for algorithm analysis, for example, lower bound arguments, average case analysis, and the theory of NP-completeness. In addition, students are exposed to various algorithm design paradigms. The course serves two purposes: to improve the students' ability to design algorithms in different areas, and to prepare students for the study of more advanced algorithms. The course covers lower and upper bounds, recurrences, basic algorithm paradigms (such as prune-and-search, dynamic programming, branch-and-bound, graph traversal, and randomised approaches), amortized analysis, NP-completeness, and some selected advanced topics.";
-  const { moduleCode, title, description } = courseModule;
+function Component({ course }) {
+  // const { moduleCode, title, description } = course;
+  const moduleCode = course.courseCode;
+  const title = course.courseName;
+  const description = course.courseDescription;
   const [rating, setRating] = useState(0);
 
   const handleRate = async () => {

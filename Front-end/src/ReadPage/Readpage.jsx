@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ReadPage.css";
 
-const Readpage = () => {
+const ReadPage = () => {
   const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
@@ -50,4 +50,4 @@ const Readpage = () => {
   );
 };
 
-export default Readpage;
+export default ReadPage;

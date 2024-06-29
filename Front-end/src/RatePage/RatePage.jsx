@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import Categories from "./Categories/Categories";
 import "./RatePage.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { Await, useNavigate, useParams } from "react-router-dom";
+// import { course } from "../../../Back-end/app/models";
 
 const url = "http://localhost:8080";
 const RatePage = () => {
-  const param = useParams();
+  const { courseCode } = useParams();
+  // const [courseName, setCourseName] = useState(null);
+  // const [professorNames, setProfessorNames] = useState(null);
+  // const [courseDescription, setCourseDescription] = useState(null);
+  const [course, setCourse] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [commonRating, setCommonRating] = useState(0);
   const [review, setReview] = useState("");
@@ -53,7 +59,7 @@ const RatePage = () => {
         window.alert("Please login again!");
         navigate("/login");
       } else {
-        const user = loginInfo.userID;
+        const user = JSON.parse(loginInfo).userID;
         const res = await fetch(url + "/api/rate", {
           method: "POST",
           headers: {
@@ -85,37 +91,69 @@ const RatePage = () => {
     }
   };
 
-  const courseCode = param.courseCode;
-  let courseName;
-  let professorNames;
-  let courseDescription;
-  try {
-    const course = fetch(url + "/api/course", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    }).then((res) => {
-      if (res.status === 200) {
-        return res.json();
+  const fetchCourse = async (url, courseCode) => {
+    try {
+      const response = await fetch(`${url}/api/getCourse?courseCode=${courseCode}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json"
+        }
+      });
+  
+      if (response.status === 200) {
+        console.log('Course found!');
+        const data = await response.json();
+        return data;
+      } else {
+        console.error('Failed to fetch course:' + response.statusText);
+        return undefined;
       }
+    } catch (error) {
+      console.error('There was an error with the fetch operation:' + error.message);
       return undefined;
-    });
-
-    if (course === undefined) {
-      window.alert("Course not found!");
-      navigate("/");
-      return;
     }
-    courseName = course.title;
-    professorNames = param.professorNames;
-    courseDescription = param.courseDescription;
-  } catch (err) {
-    throw new Error(
-      "There has been a problem with your fetch operation (Course finding):",
-      err
-    );
+  };
+
+  useEffect(() => {
+    fetchCourse(url, courseCode)
+      .then(data => {
+        if (data) {
+          console.log('Course data:', data);
+          setCourse(data);
+        } else {
+          console.log('No course data found');
+        }
+      })
+      .catch(error => {
+        console.error('Error getting course data:', error);
+        setError(error);
+      });
+  }, [url, courseCode]);
+
+  // useEffect(() => {
+  //   if (course) {
+  //     setCourseName(course.courseName);
+  //     setCourseDescription(course.courseDescription);
+  //     setProfessorNames(course.professors);
+  //   }
+  // }, [course]);
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
   }
+
+
+  if(course) {
+    console.log('Course data:', course);
+  } else {
+    console.log("Course not found!");
+    // navigate("/");
+    return <div></div>;
+  }
+  
+  const professorNames = course.professors;
+  const courseName = course.courseName;
+  const courseDescription = course.courseDescription;
 
   return (
     <div className="rate-page">
@@ -171,7 +209,8 @@ const RatePage = () => {
           </button>
           <Categories
             categories={categories}
-            onUpdateRating={handleUpdateRating}
+            // onUpdateRating={handleUpdateRating}
+            onRemoveCategory={handleRemoveCategory}
           />
         </div>
 

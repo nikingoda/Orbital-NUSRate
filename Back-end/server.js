@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/course.route")(app);
+require("./app/routes/rate.route")(app);
 
 // Endpoint to serve courses data
 app.get("/api/course", (req, res) => {

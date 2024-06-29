@@ -25,9 +25,9 @@ const HomePage = () => {
     <div>
       <NavBar />
       <div className="main">
-        {courses.map((course, index) => (
+        {/* {courses.map((course, index) => (
           <Component key={index} course={course} />
-        ))}
+        ))} */}
         <Footer />
       </div>
     </div>
