@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./LoginForm.css";
+import loginformStyles from "./LoginForm.module.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -14,64 +14,79 @@ function LoginForm() {
       const res = await fetch(url, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          usernameOrEmail, password
-        })
-      })
-  
+          usernameOrEmail,
+          password,
+        }),
+      });
+
       const data = await res.json();
-  
-      if(res.status === 200) {
-        localStorage.setItem('loginInfo', JSON.stringify({
-          userID: data.id,
-          loginToken: data.accessToken
-        }));
+
+      if (res.status === 200) {
+        localStorage.setItem(
+          "loginInfo",
+          JSON.stringify({
+            userID: data.id,
+            loginToken: data.accessToken,
+          })
+        );
         window.alert("Login successfully");
         navigate("/");
       } else {
         window.alert("Login failed! " + data.message);
       }
-    } catch(error) {
-      throw new Error('There has been a problem with your fetch operation:', error);
+    } catch (error) {
+      throw new Error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
     }
-
-  }
+  };
 
   return (
-    <div className="wrapper">
+    <div className={loginformStyles.wrapper}>
       <form action="">
         <h1>LOGIN</h1>
-        <div className="input-box">
-          <input type="text" placeholder="Username or Email" value={usernameOrEmail} onChange={e => setUsernameOrEmail(e.target.value)} required />
-          <FaUser className="icon" />
+        <div className={loginformStyles.inputbox}>
+          <input
+            type="text"
+            placeholder="Username or Email"
+            value={usernameOrEmail}
+            onChange={(e) => setUsernameOrEmail(e.target.value)}
+            required
+          />
+          <FaUser className={loginformStyles.icon} />
         </div>
-        <div className="input-box">
-          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-          <FaLock className="icon" />
+        <div className={loginformStyles.inputbox}>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <FaLock className={loginformStyles.icon} />
         </div>
 
-        <div className="remember-me">
+        <div className={loginformStyles.rememberme}>
           <label>
             <input type="checkbox" />
             Remember me
           </label>
           <a href="#">Forgot password?</a>
         </div>
-        <button 
-        type="submit" 
-        id = "login"
-        onClick={handleClick}>Login</button>
-        <div className="register-link">
+        <button type="submit" id="login" onClick={handleClick}>
+          Login
+        </button>
+        <div className={loginformStyles.registerlink}>
           <p>
             Do not have an account? <a href="/register">Register</a>
           </p>
         </div>
       </form>
-      <script>
-
-      </script>
+      <script></script>
     </div>
   );
 }

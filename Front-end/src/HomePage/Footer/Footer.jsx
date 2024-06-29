@@ -1,16 +1,15 @@
-
+import footerStyles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
+    <footer className={footerStyles.footer}>
+      <div className={footerStyles.container}>
+        <div className={footerStyles.row}>
+          <div className={footerStyles["col-md-6"]}>
             <h3>About Us</h3>
-            <p>
-            </p>
+            <p></p>
           </div>
-          <div className="col-md-6">
+          <div className={footerStyles["col-md-6"]}>
             <h3>Contact Us</h3>
             <ul>
               <li>Email: </li>
@@ -20,13 +19,15 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="footer-bottom">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <p className="text-center">
-                &copy; {new Date().getFullYear()} Ca Mot Doi Liem Khiet. All Rights
-                Reserved.
+      <div className={footerStyles["footer-bottom"]}>
+        <div className={footerStyles.container}>
+          <div className={footerStyles.row}>
+            <div
+              className={`${footerStyles["col-md-12"]} ${footerStyles["text-center"]}`}
+            >
+              <p>
+                &copy; {new Date().getFullYear()} Ca Mot Doi Liem Khiet. All
+                Rights Reserved.
               </p>
             </div>
           </div>

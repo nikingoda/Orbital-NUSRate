@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./ReadPage.css";
+import readpageStyles from "./ReadPage.module.css";
 
 const ReadPage = () => {
   const [ratings, setRatings] = useState([]);
@@ -19,11 +19,11 @@ const ReadPage = () => {
   }, []);
 
   return (
-    <div className="ratings-page">
+    <div className={readpageStyles.ratingspage}>
       <h1>REVIEW RATINGS</h1>
-      <div className="ratings-list">
+      <div className={readpageStyles.ratingslist}>
         {ratings.map((rating, index) => (
-          <div key={index} className="rating-item">
+          <div key={index} className={readpageStyles.ratingitem}>
             <p>
               <strong>User:</strong> {rating.user}
             </p>

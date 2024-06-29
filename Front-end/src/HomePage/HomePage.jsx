@@ -1,9 +1,9 @@
-import "./HomePage.css";
-import Component from "./Component/Component";
-import Footer from "./Footer/Footer";
-import NavBar from "../NavBar/NavBar";
+import  { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import NavBar from "../NavBar/NavBar";
+import Component from "./Component/Component"
+import Footer from "./Footer/Footer";
+import homepageStyles from "./HomePage.module.css";
 
 const urlCourses = "http://localhost:8080/api/course";
 
@@ -21,15 +21,16 @@ const HomePage = () => {
     };
     fetchCourses();
   }, []);
+
   return (
     <div>
       <NavBar />
-      <div className="main">
-        {/* {courses.map((course, index) => (
+      {/* <div className={homepageStyles.main}>
+        {courses.map((course, index) => (
           <Component key={index} course={course} />
-        ))} */}
-        <Footer />
-      </div>
+        ))}
+      </div> */}
+      <Footer />
     </div>
   );
 };

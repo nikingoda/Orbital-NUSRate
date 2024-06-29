@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.remove-category {
+.removecategory {
   background: none;
   border: none;
   font-size: 30px;
@@ -20,7 +20,7 @@
   margin-left: 15px;
 }
 
-.remove-category:hover {
+.removecategory:hover {
   color: darkred;
 }
 

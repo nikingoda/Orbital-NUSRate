@@ -1,0 +1,63 @@
+.allnavbar {
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+  font-size: 100px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0;
+}
+
+.NUS {
+  color: #ff7900;
+}
+
+.Rate {
+  color: #0055a4;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: hsl(0, 0%, 25%);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  text-align: center;
+  display: block;
+}
+
+.navbar a:hover {
+  background-color: hsl(0, 0%, 10%);
+  border-radius: 5px;
+}
+
+.navbar ul li {
+  padding: 10px;
+}
+
+.reglog {
+  cursor: pointer;
+}
+
+body {
+  padding-top: 150px;
+}

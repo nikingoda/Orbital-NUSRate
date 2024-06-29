@@ -1,23 +1,19 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import "./Component.css";
+import component from "./Component.module.css";
 
 const urlRating = "http://localhost:5173/api/submitRating";
-// const urlCourseCode="http://localhost:5173/api/moduleCode"
 
 function Component({ course }) {
-  // const { moduleCode, title, description } = course;
-  const moduleCode = course.courseCode;
-  const title = course.courseName;
-  const description = course.courseDescription;
+  const { courseCode, courseName, courseDescription } = course;
   const [rating, setRating] = useState(0);
 
   const handleRate = async () => {
-    const ratingData = { moduleCode, rating };
+    const ratingData = { moduleCode: courseCode, rating };
     try {
       const response = await fetch(urlRating, {
         method: "POST",
-        headers: { "Course-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(ratingData),
       });
       if (response.ok) {
@@ -36,23 +32,25 @@ function Component({ course }) {
   };
 
   return (
-    <div className="course-card">
-      <h2 className="course-code">{moduleCode}</h2>
-      <h3 className="course-name">{title}</h3>
-      <div className="course-rating">
+    <div className={component.coursecard}>
+      <h2 className={component.coursecode}>{courseCode}</h2>
+      <h3 className={component.coursename}>{courseName}</h3>
+      <div className={component.courserating}>
         <span>Course Rating: </span>
         {[1, 2, 3, 4, 5].map((star, index) => (
           <span
             key={index}
-            className={star <= rating ? "star-filled" : "star-empty"}
+            className={
+              star <= rating ? component.starfilled : component.starempty
+            }
             onClick={() => setRating(star)}
           >
             ★
           </span>
         ))}
       </div>
-      <p className="course-description">{description}</p>
-      <button className="rate-button" onClick={handleRate}>
+      <p className={component.coursedescription}>{courseDescription}</p>
+      <button className={component.ratebutton} onClick={handleRate}>
         Rate
       </button>
     </div>
@@ -60,10 +58,10 @@ function Component({ course }) {
 }
 
 Component.propTypes = {
-  courseModule: PropTypes.shape({
-    moduleCode: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+  course: PropTypes.shape({
+    courseCode: PropTypes.string.isRequired,
+    courseName: PropTypes.string.isRequired,
+    courseDescription: PropTypes.string.isRequired,
   }).isRequired,
 };
 

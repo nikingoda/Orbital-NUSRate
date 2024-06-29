@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import StarRatingComponent from "react-star-rating-component";
-import "./Categories.css";
+import categoriesStyles from "./Categories.module.css";
 
-const Categories = ({categories, onRemoveCategory}) => {
+const Categories = ({ categories, onRemoveCategory }) => {
   const [ratings, setRatings] = useState({});
 
   useEffect(() => {
@@ -21,9 +21,9 @@ const Categories = ({categories, onRemoveCategory}) => {
   };
 
   return (
-    <div className="categories">
+    <div className={categoriesStyles.categories}>
       {categories.map((category) => (
-        <div key={category} className="category">
+        <div key={category} className={categoriesStyles.category}>
           <h5>{category}</h5>
           <StarRatingComponent
             name={`${category}Rating`}
@@ -32,7 +32,7 @@ const Categories = ({categories, onRemoveCategory}) => {
             onStarClick={(nextValue) => handleRatingChange(category, nextValue)}
           />
           <button
-            className="remove-category"
+            className={categoriesStyles.removecategory}
             onClick={() => onRemoveCategory(category)}
           >
             &times;
@@ -44,5 +44,3 @@ const Categories = ({categories, onRemoveCategory}) => {
 };
 
 export default Categories;
-
-

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import Categories from "./Categories/Categories";
-import "./RatePage.css";
+import ratepageStyles from "./RatePage.module.css";
 import { Await, useNavigate, useParams } from "react-router-dom";
 // import { course } from "../../../Back-end/app/models";
 
@@ -93,39 +93,44 @@ const RatePage = () => {
 
   const fetchCourse = async (url, courseCode) => {
     try {
-      const response = await fetch(`${url}/api/getCourse?courseCode=${courseCode}`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json"
+      const response = await fetch(
+        `${url}/api/getCourse?courseCode=${courseCode}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
         }
-      });
-  
+      );
+
       if (response.status === 200) {
-        console.log('Course found!');
+        console.log("Course found!");
         const data = await response.json();
         return data;
       } else {
-        console.error('Failed to fetch course:' + response.statusText);
+        console.error("Failed to fetch course:" + response.statusText);
         return undefined;
       }
     } catch (error) {
-      console.error('There was an error with the fetch operation:' + error.message);
+      console.error(
+        "There was an error with the fetch operation:" + error.message
+      );
       return undefined;
     }
   };
 
   useEffect(() => {
     fetchCourse(url, courseCode)
-      .then(data => {
+      .then((data) => {
         if (data) {
-          console.log('Course data:', data);
+          console.log("Course data:", data);
           setCourse(data);
         } else {
-          console.log('No course data found');
+          console.log("No course data found");
         }
       })
-      .catch(error => {
-        console.error('Error getting course data:', error);
+      .catch((error) => {
+        console.error("Error getting course data:", error);
         setError(error);
       });
   }, [url, courseCode]);
@@ -142,37 +147,36 @@ const RatePage = () => {
     return <div>Error: {error.message}</div>;
   }
 
-
-  if(course) {
-    console.log('Course data:', course);
+  if (course) {
+    console.log("Course data:", course);
   } else {
     console.log("Course not found!");
     // navigate("/");
     return <div></div>;
   }
-  
+
   const professorNames = course.professors;
   const courseName = course.courseName;
   const courseDescription = course.courseDescription;
 
   return (
-    <div className="rate-page">
+    <div className={ratepageStyles.ratepage}>
       <h1>RATE COURSE</h1>
-      <div className="course-information">
-        <h2 className="course-code">{courseCode}</h2>
-        <h3 className="course-name">{courseName}</h3>
-        <span className="professor-names">
+      <div className={ratepageStyles.courseinformation}>
+        <h2 className={ratepageStyles.coursecode}>{courseCode}</h2>
+        <h3 className={ratepageStyles.coursename}>{courseName}</h3>
+        <span className={ratepageStyles.professornames}>
           {professorNames.map((professor, index) => (
-            <h4 key={index} className="professor-name">
+            <h4 key={index} className={ratepageStyles.professorname}>
               {professor}
             </h4>
           ))}
         </span>
-        <p className="course-description">{courseDescription}</p>
+        <p className={ratepageStyles.coursedescription}>{courseDescription}</p>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="star-rating">
+        <div className={ratepageStyles.starrating}>
           <StarRatingComponent
             name="courseRating"
             starCount={5}
@@ -180,7 +184,7 @@ const RatePage = () => {
             onStarClick={handleRatingChange}
           />
         </div>
-        <div className="comment-field">
+        <div className={ratepageStyles.commentfield}>
           <textarea
             placeholder="Comment"
             value={review}
@@ -190,7 +194,7 @@ const RatePage = () => {
 
         <div className="">
           <select
-            className="form-select"
+            className={ratepageStyles.formselect}
             aria-label="Default select example"
             value={selectedCategory}
             onChange={handleCategoryChange}
@@ -202,7 +206,7 @@ const RatePage = () => {
           </select>
           <button
             type="button"
-            className="add-categories"
+            className={ratepageStyles.addcategories}
             onClick={handleAddCategory}
           >
             ADD CATEGORIES
@@ -216,7 +220,7 @@ const RatePage = () => {
 
         <input
           type="checkbox"
-          className="btn-check"
+          className={ratepageStyles.btncheck}
           id="btn-check-outlined"
           autoComplete="off"
         />
@@ -224,7 +228,7 @@ const RatePage = () => {
           FAVORITE COURSE
         </label>
 
-        <button className="submit" type="submit">
+        <button className={ratepageStyles.submit} type="submit">
           SUBMIT
         </button>
       </form>

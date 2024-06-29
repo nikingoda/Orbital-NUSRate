@@ -1,4 +1,4 @@
-.course-card {
+.coursecard {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -9,21 +9,21 @@
   height: 470px;
 }
 
-.course-name {
+.coursename {
   font-size: 24px;
   color: rgb(28, 24, 24);
 }
 
-.course-code {
+.coursecode {
   font-size: 30px;
   color: #ff7900;
 }
 
-.professor-name {
+.professorname {
   color: #555;
 }
 
-.course-description {
+.coursedescription {
   color: #666;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -32,20 +32,20 @@
   -webkit-box-orient: vertical;
 }
 
-.course-rating {
+.courserating {
   align-items: left;
   color: rgb(28, 24, 24);
 }
 
-.star-filled {
+.starfilled {
   color: #ffcc00;
 }
 
-.star-empty {
+.starempty {
   color: #ccc;
 }
 
-.rate-button {
+.ratebutton {
   margin: 10px;
   padding: 5px 10px;
   background-color: #ff7900;
@@ -57,6 +57,6 @@
   width: 60px;
 }
 
-.rate-button:hover {
+.ratebutton:hover {
   background-color: #ca640a;
 }

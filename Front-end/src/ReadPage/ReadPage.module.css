@@ -1,24 +1,24 @@
-.ratings-page {
+.ratingspage {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.ratings-list {
+.ratingslist {
   margin-top: 20px;
 }
 
-.rating-item {
+.ratingitem {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-.rating-item p {
+.ratingitem p {
   margin: 5px 0;
 }
 
-.rating-item strong {
+.ratingitem strong {
   font-weight: bold;
   margin-right: 5px;
 }
