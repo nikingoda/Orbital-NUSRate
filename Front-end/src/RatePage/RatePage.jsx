@@ -3,6 +3,7 @@ import StarRatingComponent from "react-star-rating-component";
 import Categories from "./Categories/Categories";
 import ratepageStyles from "./RatePage.module.css";
 import { Await, useNavigate, useParams } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 // import { course } from "../../../Back-end/app/models";
 
 const url = "http://localhost:8080";
@@ -157,6 +158,7 @@ const RatePage = () => {
 
   return (
     <div className={ratepageStyles.ratepage}>
+      <NavBar/>
       <h1>RATE COURSE</h1>
       <div className={ratepageStyles.courseinformation}>
         <h2 className={ratepageStyles.coursecode}>{courseCode}</h2>
@@ -223,7 +225,7 @@ const RatePage = () => {
         <label className="btn btn-outline-primary" htmlFor="btn-check-outlined">
           FAVORITE COURSE
         </label>
-
+        
         <button className={ratepageStyles.submit} type="submit">
           SUBMIT
         </button>
