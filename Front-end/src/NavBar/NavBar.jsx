@@ -1,21 +1,47 @@
 import { useNavigate } from "react-router-dom";
 import navbarStyles from "./NavBar.module.css";
+import { useEffect, useState } from "react";
 
+
+const url = "http://localhost:8080";
 const NavBar = () => {
+  const [error, setError] = useState(null);
+  const [state, setState] = useState(false);
   const navigate = useNavigate();
-  const verifyToken = () => {
-    const currentTime = new Date().getTime() / 1000;
-    const loginInfo = localStorage.getItem("loginInfo");
-    if (!loginInfo) return false;
-    const token = JSON.parse(loginInfo).loginToken;
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    if (currentTime > payload.exp) {
-      localStorage.removeItem("loginInfo");
+  const verifyToken = async () => {
+    try {
+      const loginInfo = localStorage.getItem("loginInfo");
+      const res = await fetch(url + "/user", {
+        method: "GET",
+        headers: {
+          "x-access-token": JSON.parse(loginInfo).loginToken
+        }
+      });
+      if(res.status === 200) {
+        console.log("ok")
+        return true;
+      } else {
+        return false;
+      }
+
+    } catch (err) {
       return false;
     }
-    return true;
+
   };
-  if (!verifyToken()) {
+
+  useEffect(() => {
+    verifyToken()
+    .then((s) => {
+      setState(s);
+    })
+    .catch((error) => {
+      console.error(error);
+      setError(error);
+    });
+  });
+  
+  if (!state) {
     return (
       <div className={navbarStyles.navbar}>
         <div>
@@ -27,13 +53,13 @@ const NavBar = () => {
             <a href="/">HOME</a>
           </li>
           <li>
-            <a href="#">ABOUT</a>
+            <a href="/about">ABOUT</a>
           </li>
           <li>
             <a href="#">RATE</a>
           </li>
           <li>
-            <a href="#">CONTACT</a>
+            <a href="/contact">CONTACT</a>
           </li>
         </ul>
         <ul>
@@ -62,20 +88,25 @@ const NavBar = () => {
     };
     return (
       <div className={navbarStyles.navbar}>
-        <h1 className={`${navbarStyles.logo} ${navbarStyles.NUS}`}>NUS</h1>
-        <h1 className={`${navbarStyles.logo} ${navbarStyles.Rate}`}>Rate</h1>
+        <div>
+          <h1 className={`${navbarStyles.logo} ${navbarStyles.NUS}`}>NUS</h1>
+          <h1 className={`${navbarStyles.logo} ${navbarStyles.Rate}`}>Rate</h1>
+        </div>
         <ul>
           <li>
-            <a href="#">HOME</a>
+            <a href="/">HOME</a>
           </li>
           <li>
-            <a href="#">ABOUT</a>
+            <a href="/about">ABOUT</a>
           </li>
           <li>
             <a href="#">RATE</a>
           </li>
           <li>
-            <a href="#">CONTACT</a>
+            <a href="/contact">CONTACT</a>
+          </li>
+          <li>
+            <a href = "#">ACCOUNT</a>
           </li>
           <li onClick={logOut}>
             <a className={navbarStyles.reglog} href="/login">

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import categoriesStyles from "./Categories.module.css";
 
-const Categories = ({ categories, onRemoveCategory }) => {
+const Categories = ({ categories, onRemoveCategory, onUpdateRating }) => {
   const [ratings, setRatings] = useState({});
 
   useEffect(() => {
@@ -14,6 +14,7 @@ const Categories = ({ categories, onRemoveCategory }) => {
   }, [categories]);
 
   const handleRatingChange = (category, nextValue) => {
+    onUpdateRating(category, nextValue);
     setRatings((prevRatings) => ({
       ...prevRatings,
       [category]: nextValue,

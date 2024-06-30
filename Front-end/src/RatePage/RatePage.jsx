@@ -11,6 +11,11 @@ const RatePage = () => {
   // const [courseName, setCourseName] = useState(null);
   // const [professorNames, setProfessorNames] = useState(null);
   // const [courseDescription, setCourseDescription] = useState(null);
+  const [storedRatings, setStoredRatings] = useState({
+    Difficulty: 0,
+    Usefulness: 0,
+    Workload: 0
+  });
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -69,8 +74,7 @@ const RatePage = () => {
             user,
             commonRating,
             review,
-            selectedCategory,
-            categories,
+            categoryRatings: storedRatings,
             date,
           }),
         });
@@ -134,14 +138,6 @@ const RatePage = () => {
         setError(error);
       });
   }, [url, courseCode]);
-
-  // useEffect(() => {
-  //   if (course) {
-  //     setCourseName(course.courseName);
-  //     setCourseDescription(course.courseDescription);
-  //     setProfessorNames(course.professors);
-  //   }
-  // }, [course]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -213,7 +209,7 @@ const RatePage = () => {
           </button>
           <Categories
             categories={categories}
-            // onUpdateRating={handleUpdateRating}
+            onUpdateRating={handleUpdateRating}
             onRemoveCategory={handleRemoveCategory}
           />
         </div>
