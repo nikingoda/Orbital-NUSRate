@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import StarRatingComponent from "react-star-rating-component";
+import StarRatingComponent from "react-rating-stars-component";
 import Categories from "./Categories/Categories";
 import ratepageStyles from "./RatePage.module.css";
 import { Await, useNavigate, useParams } from "react-router-dom";

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import StarRatingComponent from "react-star-rating-component";
+import StarRatingComponent from "react-rating-stars-component";
 import categoriesStyles from "./Categories.module.css";
 
 const Categories = ({ categories, onRemoveCategory, onUpdateRating }) => {
