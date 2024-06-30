@@ -2,7 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-const data = require("./courseDetails.json");
+const data = require("../courseDetails.json");
+const env = require("dotenv");
+env.config();
 
 const app = express();
 
@@ -24,10 +26,10 @@ app.get("/", (req, res) => {
 });
 
 // routes
-require("./app/routes/auth.routes")(app);
-require("./app/routes/user.routes")(app);
-require("./app/routes/course.route")(app);
-require("./app/routes/rate.route")(app);
+require("./routes/auth.routes")(app);
+require("./routes/user.routes")(app);
+require("./routes/course.route")(app);
+require("./routes/rate.route")(app);
 
 // Endpoint to serve courses data
 app.get("/api/course", (req, res) => {
@@ -40,11 +42,11 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-const db = require("./app/models");
+const db = require("./models");
 const Role = db.role;
 const Course = db.course;
 
-const dbConfig = require("./app/config/db.config");
+const dbConfig = require("./config/db.config");
 
 async function initial() {
   try {
@@ -83,8 +85,9 @@ async function initial() {
   }
 }
 
+
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`)
+  .connect("mongodb+srv://ngoducanh6a01:ngoducanhNUSCS2327@cluster0.cnkccio.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     initial();
     console.log("Successfully connect to MongoDB.");
