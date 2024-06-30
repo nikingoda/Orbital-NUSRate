@@ -76,6 +76,7 @@ const RatePage = () => {
           },
           body: JSON.stringify({
             user,
+            courseCode,
             commonRating,
             review,
             categoryRatings: storedRatings,

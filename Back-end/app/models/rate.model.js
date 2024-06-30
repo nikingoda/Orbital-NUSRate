@@ -11,6 +11,7 @@ const Rate = mongoose.model(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
+        courseCode: String,
         commonRating: Number,
         difficulty: Number,
         usefulness: Number,

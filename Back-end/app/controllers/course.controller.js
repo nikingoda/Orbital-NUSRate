@@ -6,7 +6,7 @@ exports.course = async (req, res) => {
         const course = await Course.findOne({courseCode: req.query.courseCode}).exec();
         if(!course) {
             res.status(404).send({message: "Course not found!"});
-            console.log(req.query.courseCode);
+            // console.log(req.query.courseCode);
         } else {
             res.status(200).send({
                 message: "Course found!", 

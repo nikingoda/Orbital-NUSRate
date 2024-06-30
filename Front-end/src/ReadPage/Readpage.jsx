@@ -3,15 +3,18 @@ import axios from "axios";
 import readpageStyles from "./ReadPage.module.css";
 import StarRatingComponent from "react-rating-stars-component";
 import NavBar from "../NavBar/NavBar";
+import { useParams } from "react-router-dom";
 
+const url = "http://localhost:8080";
 const ReadPage = () => {
+  const { courseCode } = useParams();
   const [ratings, setRatings] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchRatings = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/ratings");
+        const response = await axios.get(`${url}/api/ratings?courseCode=${courseCode}`);
         setRatings(response.data);
       } catch (error) {
         console.error("Error fetching ratings:", error);
