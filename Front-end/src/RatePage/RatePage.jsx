@@ -15,13 +15,14 @@ const RatePage = () => {
   const [storedRatings, setStoredRatings] = useState({
     Difficulty: 0,
     Usefulness: 0,
-    Workload: 0
+    Workload: 0,
   });
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [commonRating, setCommonRating] = useState(0);
   const [review, setReview] = useState("");
+  const [professorName, setProfessorName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const loginInfo = localStorage.getItem("loginInfo");
@@ -30,7 +31,9 @@ const RatePage = () => {
   const handleRatingChange = (nextValue) => {
     setCommonRating(nextValue);
   };
-
+  const handleProfessorChange = (event) => {
+    setProfessorName(event.target.value);
+  };
   const handleCommentChange = (event) => {
     setReview(event.target.value);
   };
@@ -158,7 +161,7 @@ const RatePage = () => {
 
   return (
     <div className={ratepageStyles.ratepage}>
-      <NavBar/>
+      <NavBar />
       <h1>RATE COURSE</h1>
       <div className={ratepageStyles.courseinformation}>
         <h2 className={ratepageStyles.coursecode}>{courseCode}</h2>
@@ -182,6 +185,12 @@ const RatePage = () => {
             onStarClick={handleRatingChange}
           />
         </div>
+        <textarea
+            placeholder="Professor Name"
+            value={professorName}
+            onChange={handleProfessorChange}
+            className={ratepageStyles.profname}
+          />
         <div className={ratepageStyles.commentfield}>
           <textarea
             placeholder="Comment"
@@ -225,7 +234,7 @@ const RatePage = () => {
         <label className="btn btn-outline-primary" htmlFor="btn-check-outlined">
           FAVORITE COURSE
         </label>
-        
+
         <button className={ratepageStyles.submit} type="submit">
           SUBMIT
         </button>

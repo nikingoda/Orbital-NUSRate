@@ -40,6 +40,9 @@ const ReadPage = () => {
               <strong>Course Code:</strong> {rating.courseCode}
             </p>
             <p>
+              <strong>Professor: </strong> {rating.professor}
+            </p>
+            <p>
               <strong>Rating:</strong> {rating.commonRating}
             </p>
             <p>
