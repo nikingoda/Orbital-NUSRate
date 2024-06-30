@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import readpageStyles from "./ReadPage.module.css";
-import StarRatingComponent from "react-star-rating-component";
+import StarRatingComponent from "react-rating-stars-component";
 import NavBar from "../NavBar/NavBar";
 
 const ReadPage = () => {
