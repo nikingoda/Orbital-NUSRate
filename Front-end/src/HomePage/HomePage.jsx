@@ -39,6 +39,40 @@ const HomePage = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
 
+  const getPagination = () => {
+    const paginationArray = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) {
+        paginationArray.push(i);
+      }
+    } else {
+      if (currentPage <= 4) {
+        paginationArray.push(1, 2, 3, 4, 5, "...", totalPages);
+      } else if (currentPage >= totalPages - 3) {
+        paginationArray.push(
+          1,
+          "...",
+          totalPages - 4,
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+          totalPages
+        );
+      } else {
+        paginationArray.push(
+          1,
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPages
+        );
+      }
+    }
+    return paginationArray;
+  };
+
   return (
     <div>
       <NavBar />
@@ -57,13 +91,14 @@ const HomePage = () => {
         ))}
       </div>
       <div className={homepageStyles.pagination}>
-        {Array.from({ length: totalPages }, (_, index) => (
+        {getPagination().map((page, index) => (
           <button
             key={index}
-            onClick={() => paginate(index + 1)}
+            onClick={() => typeof page === "number" && paginate(page)}
             className={homepageStyles.pagebutton}
+            disabled={page === "..."}
           >
-            {index + 1}
+            {page}
           </button>
         ))}
       </div>
