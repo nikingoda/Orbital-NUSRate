@@ -11,7 +11,6 @@ const HomePage = () => {
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [customPage, setCustomPage] = useState("");
   const coursesPerPage = 15;
 
   useEffect(() => {
@@ -39,16 +38,7 @@ const HomePage = () => {
     indexOfLastCourse
   );
 
-  const paginate = (pageNumber) => {
-    if (
-      pageNumber > 0 &&
-      pageNumber <= Math.ceil(filteredCourses.length / coursesPerPage)
-    ) {
-      setCurrentPage(pageNumber);
-      setCustomPage(""); 
-    }
-  };
-
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
 
   const getPagination = () => {
@@ -59,11 +49,11 @@ const HomePage = () => {
       }
     } else {
       if (currentPage <= 4) {
-        paginationArray.push(1, 2, 3, 4, 5, "input", totalPages);
+        paginationArray.push(1, 2, 3, 4, 5, "...", totalPages);
       } else if (currentPage >= totalPages - 3) {
         paginationArray.push(
           1,
-          "input",
+          "...",
           totalPages - 4,
           totalPages - 3,
           totalPages - 2,
@@ -73,25 +63,16 @@ const HomePage = () => {
       } else {
         paginationArray.push(
           1,
-          "input",
+          "...",
           currentPage - 1,
           currentPage,
           currentPage + 1,
-          "input",
+          "...",
           totalPages
         );
       }
     }
     return paginationArray;
-  };
-
-  const handleCustomPageChange = (event) => {
-    setCustomPage(event.target.value);
-  };
-
-  const handleCustomPageSubmit = (event) => {
-    event.preventDefault();
-    paginate(Number(customPage));
   };
 
   return (
@@ -113,35 +94,14 @@ const HomePage = () => {
       </div>
       <div className={homepageStyles.pagination}>
         {getPagination().map((page, index) => (
-          <span key={index}>
-            {page === "input" ? (
-              <form
-                onSubmit={handleCustomPageSubmit}
-                className={homepageStyles.pageform}
-              >
-                <input
-                  type="number"
-                  value={customPage}
-                  onChange={handleCustomPageChange}
-                  className={homepageStyles.pageinput}
-                  placeholder="Page"
-                  min="1"
-                  max={totalPages}
-                />
-                <button type="submit" className={homepageStyles.pagebutton}>
-                  Go
-                </button>
-              </form>
-            ) : (
-              <button
-                onClick={() => paginate(page)}
-                className={homepageStyles.pagebutton}
-                disabled={currentPage === page}
-              >
-                {page}
-              </button>
-            )}
-          </span>
+          <button
+            key={index}
+            onClick={() => typeof page === "number" && paginate(page)}
+            className={homepageStyles.pagebutton}
+            disabled={page === "..."}
+          >
+            {page}
+          </button>
         ))}
       </div>
       <Footer />
