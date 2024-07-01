@@ -30,6 +30,9 @@ function Component({ course }) {
     }
     console.log("Rating submitted:", rating);
   };
+  const handleReadReview = () => {
+    // change to Readpage
+  };
 
   return (
     <div className={component.coursecard}>
@@ -51,7 +54,10 @@ function Component({ course }) {
       </div>
       <p className={component.coursedescription}>{courseDescription}</p>
       <button className={component.ratebutton} onClick={handleRate}>
-        Rate
+        Review Course
+      </button>
+      <button className={component.readreviewbutton} onClick={handleReadReview}>
+        Read Review
       </button>
     </div>
   );
