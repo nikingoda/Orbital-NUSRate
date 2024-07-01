@@ -17,7 +17,9 @@ const HomePage = () => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get(urlCourses);
+        console.log(response.data);
         setCourses(response.data);
+        console.log(courses);
       } catch (error) {
         console.log("Error fetching courses", error);
       }
@@ -25,10 +27,12 @@ const HomePage = () => {
     fetchCourses();
   }, []);
 
+  console.log(courses);
+
   const filteredCourses = courses.filter(
     (course) =>
-      course.courseName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.courseCode.toLowerCase().includes(searchQuery.toLowerCase())
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.moduleCode.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
