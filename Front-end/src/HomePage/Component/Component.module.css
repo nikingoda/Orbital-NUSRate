@@ -1,62 +1,73 @@
 .coursecard {
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
-  margin: 1px;
-  background-color: rgba(20, 20, 20, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  height: 470px;
+  padding: 20px;
+  margin: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  transition: transform 0.2s;
+}
+
+.coursecard:hover {
+  transform: scale(1.05);
 }
 
 .coursename {
-  font-size: 24px;
-  color: rgb(28, 24, 24);
+  font-size: 20px;
+  color: #333;
+  margin: 8px 0;
 }
 
 .coursecode {
-  font-size: 30px;
+  font-size: 22px;
   color: #ff7900;
-}
-
-.professorname {
-  color: #555;
+  margin: 4px 0;
 }
 
 .coursedescription {
-  color: #666;
+  color: #555;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  margin: 8px 0;
 }
 
 .courserating {
-  align-items: left;
-  color: rgb(28, 24, 24);
+  color: #333;
+  margin: 8px 0;
 }
 
 .starfilled {
   color: #ffcc00;
+  cursor: pointer;
 }
 
 .starempty {
   color: #ccc;
+  cursor: pointer;
 }
 
-.ratebutton {
-  margin: 10px;
-  padding: 5px 10px;
+.buttoncontainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.ratebutton,
+.readreviewbutton {
+  padding: 8px 16px;
   background-color: #ff7900;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 60px;
 }
 
-.ratebutton:hover {
+.ratebutton:hover,
+.readreviewbutton:hover {
   background-color: #ca640a;
 }
