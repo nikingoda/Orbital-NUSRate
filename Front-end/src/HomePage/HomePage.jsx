@@ -10,6 +10,7 @@ const urlCourses = "http://localhost:8080/api/course";
 const HomePage = () => {
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
   const coursesPerPage = 15;
 
   useEffect(() => {
@@ -24,15 +25,32 @@ const HomePage = () => {
     fetchCourses();
   }, []);
 
+  const filteredCourses = courses.filter(
+    (course) =>
+      course.courseName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.courseCode.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
+  const currentCourses = filteredCourses.slice(
+    indexOfFirstCourse,
+    indexOfLastCourse
+  );
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const totalPages = Math.ceil(courses.length / coursesPerPage);
+  const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
 
   return (
     <div>
       <NavBar />
+      <div className={homepageStyles.search}>
+        <input
+          type="text"
+          placeholder="Search courses..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className={homepageStyles.searchinput}
+        />
+      </div>
       <div className={homepageStyles.main}>
         {currentCourses.map((course, index) => (
           <Component key={index} course={course} />
