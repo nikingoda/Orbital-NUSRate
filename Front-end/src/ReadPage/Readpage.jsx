@@ -15,7 +15,7 @@ const ReadPage = () => {
     const fetchRatings = async () => {
       try {
         const response = await axios.get(`${url}/api/ratings?courseCode=${courseCode}`);
-        setRatings(response.data);
+        setRatings(response.data.data);
       } catch (error) {
         console.error("Error fetching ratings:", error);
         setError("Failed to fetch ratings. Please try again later.");
@@ -24,6 +24,8 @@ const ReadPage = () => {
 
     fetchRatings();
   }, []);
+
+  console.log(ratings);
 
   if (error) {
     return <div className={readpageStyles.error}>{error}</div>;
