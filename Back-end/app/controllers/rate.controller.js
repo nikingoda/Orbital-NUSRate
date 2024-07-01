@@ -1,5 +1,6 @@
 const db = require("../models");
 const Rate = db.rate;
+const User = db.user;
 
 exports.rate = async (req, res) => {
     try {
@@ -17,6 +18,7 @@ exports.rate = async (req, res) => {
             user: req.body.user,
             commonRating: req.body.commonRating,
             courseCode: req.body.courseCode,
+            userName: User.findById(req.body.user).username,
             // usefulness: req.body.usefulness,
             // difficulty: req.body.difficulty,
             // workload: req.body.workload,

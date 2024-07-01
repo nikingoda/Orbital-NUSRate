@@ -39,7 +39,7 @@ const ReadPage = () => {
         {ratings.map((rating, index) => (
           <div key={index} className={readpageStyles.ratingitem}>
             <p>
-              <strong>User:</strong> {rating.user}
+              <strong>User:</strong> nikingoda
             </p>
             <p>
               <strong>Course Code:</strong> {rating.courseCode}
@@ -53,7 +53,7 @@ const ReadPage = () => {
             <p>
               <strong>Review:</strong> {rating.review}
             </p>
-            <div>
+            {/* <div>
               <strong>Categories:</strong>
               {Object.keys(rating.categoryRatings).map((category) => (
                 <div key={category} className={readpageStyles.categoryRating}>
@@ -66,7 +66,7 @@ const ReadPage = () => {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
             <p>
               <strong>Date:</strong>{" "}
               {new Date(rating.date).toLocaleDateString()}
