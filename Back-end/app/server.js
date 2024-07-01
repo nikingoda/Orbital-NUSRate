@@ -30,6 +30,7 @@ require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 require("./routes/course.route")(app);
 require("./routes/rate.route")(app);
+require("./routes/ratings.route")(app);
 
 // Endpoint to serve courses data
 app.get("/api/course", (req, res) => {
