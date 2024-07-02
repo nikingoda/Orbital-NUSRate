@@ -57,12 +57,17 @@ function Component({ course }) {
         ))}
       </div>
       <p className={component.coursedescription}>{courseDescription}</p>
-      <button className={component.ratebutton} onClick={handleRate}>
-        Review Course
-      </button>
-      <button className={component.readreviewbutton} onClick={handleReadReview}>
-        Read Review
-      </button>
+      <div className={component.buttons}>
+        <button className={component.ratebutton} onClick={handleRate}>
+          Review Course
+        </button>
+        <button
+          className={component.readreviewbutton}
+          onClick={handleReadReview}
+        >
+          Read Review
+        </button>
+      </div>
     </div>
   );
 }

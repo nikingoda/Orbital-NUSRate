@@ -86,9 +86,19 @@ async function initial() {
   }
 }
 
+// db.mongoose
+//   .connect("mongodb+srv://ngoducanh6a01:ngoducanhNUSCS2327@cluster0.cnkccio.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+//   .then(() => {
+//     initial();
+//     console.log("Successfully connect to MongoDB.");
+//   })
+//   .catch((err) => {
+//     console.error("Connection error!", err);
+//     process.exit();
+//   });
 
 db.mongoose
-  .connect("mongodb+srv://ngoducanh6a01:ngoducanhNUSCS2327@cluster0.cnkccio.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`)
   .then(() => {
     initial();
     console.log("Successfully connect to MongoDB.");

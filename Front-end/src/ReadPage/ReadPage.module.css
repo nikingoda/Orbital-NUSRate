@@ -2,6 +2,8 @@
   padding: 20px;
   background-color: #f9f9f9;
   font-family: Arial, sans-serif;
+  width: 150vh; 
+  border-radius: 5px;
 }
 
 .ratingspage h1 {
@@ -39,4 +41,17 @@
   color: red;
   text-align: center;
   margin-top: 20px;
+}
+
+.coursedetails {
+  height: auto;
+  width: auto;
+}
+
+.coursedetails h2 {
+  color: #ff7900;
+}
+.usernamestyle{
+  color: #ff7900;
+  font-size: 24px;
 }

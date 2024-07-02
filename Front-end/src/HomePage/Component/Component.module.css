@@ -3,10 +3,13 @@
   border-radius: 8px;
   padding: 20px;
   margin: 16px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.92);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 350px;
+  height: 230px;
   transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 .coursecard:hover {
@@ -50,10 +53,10 @@
   cursor: pointer;
 }
 
-.buttoncontainer {
+.buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
+  margin-top: auto; /* Push buttons to the bottom */
 }
 
 .ratebutton,

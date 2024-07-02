@@ -80,3 +80,13 @@
   border-radius: 5px;
   font-size: 15px;
 }
+
+.fav{
+  border-radius: 5px;
+  height: 50px;
+  width: 100px;
+}
+
+.CiHeart{
+  font-size: 30px;
+}

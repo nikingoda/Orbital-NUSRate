@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import Component from "./Component/Component";
 import Footer from "./Footer/Footer";
 import homepageStyles from "./HomePage.module.css";
+import { CiSearch } from "react-icons/ci";
 
 const urlCourses = "http://localhost:8080/api/course";
 
@@ -75,6 +76,18 @@ const HomePage = () => {
     return paginationArray;
   };
 
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   return (
     <div className={homepageStyles.container}>
       <NavBar />
@@ -86,6 +99,7 @@ const HomePage = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
           className={homepageStyles.searchinput}
         />
+        {/* <CiSearch className={homepageStyles.CiSearch}/> */}
       </div>
       <div className={homepageStyles.main}>
         {currentCourses.map((course, index) => (
@@ -93,16 +107,36 @@ const HomePage = () => {
         ))}
       </div>
       <div className={homepageStyles.pagination}>
+        <button
+          onClick={goToPreviousPage}
+          className={`${homepageStyles.pagebutton} ${
+            currentPage === 1 ? homepageStyles.disabled : ""
+          }`}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
         {getPagination().map((page, index) => (
           <button
             key={index}
             onClick={() => typeof page === "number" && paginate(page)}
-            className={homepageStyles.pagebutton}
+            className={`${homepageStyles.pagebutton} ${
+              page === currentPage ? homepageStyles.currentpage : ""
+            }`}
             disabled={page === "..."}
           >
             {page}
           </button>
         ))}
+        <button
+          onClick={goToNextPage}
+          className={`${homepageStyles.pagebutton} ${
+            currentPage === totalPages ? homepageStyles.disabled : ""
+          }`}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
       <Footer />
     </div>

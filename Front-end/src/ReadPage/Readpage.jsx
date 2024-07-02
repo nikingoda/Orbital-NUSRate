@@ -10,11 +10,58 @@ const ReadPage = () => {
   const { courseCode } = useParams();
   const [ratings, setRatings] = useState([]);
   const [error, setError] = useState(null);
+  const [course, setCourse] = useState(null);
+
+  const fetchCourse = async (url, courseCode) => {
+    try {
+      const response = await fetch(
+        `${url}/api/getCourse?courseCode=${courseCode}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Course found!");
+        const data = await response.json();
+        return data;
+      } else {
+        console.error("Failed to fetch course:" + response.statusText);
+        return undefined;
+      }
+    } catch (error) {
+      console.error(
+        "There was an error with the fetch operation:" + error.message
+      );
+      return undefined;
+    }
+  };
+
+  useEffect(() => {
+    fetchCourse(url, courseCode)
+      .then((data) => {
+        if (data) {
+          console.log("Course data:", data);
+          setCourse(data);
+        } else {
+          console.log("No course data found");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting course data:", error);
+        setError(error);
+      });
+  }, [url, courseCode]);
 
   useEffect(() => {
     const fetchRatings = async () => {
       try {
-        const response = await axios.get(`${url}/api/ratings?courseCode=${courseCode}`);
+        const response = await axios.get(
+          `${url}/api/ratings?courseCode=${courseCode}`
+        );
         setRatings(response.data.data);
       } catch (error) {
         console.error("Error fetching ratings:", error);
@@ -23,9 +70,10 @@ const ReadPage = () => {
     };
 
     fetchRatings();
-  }, []);
+  }, [courseCode]);
 
-  console.log(ratings);
+  const courseName = course ? course.courseName : "";
+  const courseDescription = course ? course.courseDescription : "";
 
   if (error) {
     return <div className={readpageStyles.error}>{error}</div>;
@@ -34,16 +82,23 @@ const ReadPage = () => {
   return (
     <div className={readpageStyles.ratingspage}>
       <NavBar />
-      <h1>REVIEW RATINGS</h1>
+      <h1>
+        <strong>REVIEW RATINGS</strong>
+      </h1>
+      <div className={readpageStyles.coursedetails}>
+        <h2>{courseCode}</h2>
+        <h3>{courseName}</h3>
+        <p>{courseDescription}</p>
+      </div>
       <div className={readpageStyles.ratingslist}>
         {ratings.map((rating, index) => (
           <div key={index} className={readpageStyles.ratingitem}>
-            <p>
-              <strong>User:</strong> nikingoda
+            <p className={readpageStyles.usernamestyle}>
+              <strong>nikingoda</strong>
             </p>
-            <p>
+            {/* <p>
               <strong>Course Code:</strong> {rating.courseCode}
-            </p>
+            </p> */}
             <p>
               <strong>Professor: </strong> {rating.professor}
             </p>
@@ -51,7 +106,7 @@ const ReadPage = () => {
               <strong>Rating:</strong> {rating.commonRating}
             </p>
             <p>
-              <strong>Review:</strong> {rating.review}
+              <strong></strong> {rating.review}
             </p>
             {/* <div>
               <strong>Categories:</strong>

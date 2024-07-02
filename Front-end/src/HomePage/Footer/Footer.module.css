@@ -1,43 +1,9 @@
 .footer {
   background-color: #333;
   padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; 
-  position: fixed; 
-  bottom: 0; 
-  left:0;
-  height: 5px;
-}
-
-.footer h3 {
   color: #fff;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0;
 }
 
-.footer p {
-  color: #ccc;
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0; 
-}
-
-.footer ul li {
-  color: #ccc;
-}
-
-.footerbottom {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  width: 100%; 
-  text-align: center; 
-  position: relative; 
-}
-
-.footerbottom p {
-  margin: 0;
-}

@@ -4,6 +4,7 @@ import Categories from "./Categories/Categories";
 import ratepageStyles from "./RatePage.module.css";
 import { Await, useNavigate, useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+import { CiHeart } from "react-icons/ci";
 // import { course } from "../../../Back-end/app/models";
 
 const url = "http://localhost:8080";
@@ -187,11 +188,11 @@ const RatePage = () => {
           />
         </div>
         <textarea
-            placeholder="Professor Name"
-            value={professorName}
-            onChange={handleProfessorChange}
-            className={ratepageStyles.profname}
-          />
+          placeholder="Professor Name"
+          value={professorName}
+          onChange={handleProfessorChange}
+          className={ratepageStyles.profname}
+        />
         <div className={ratepageStyles.commentfield}>
           <textarea
             placeholder="Comment"
@@ -226,7 +227,7 @@ const RatePage = () => {
           />
         </div>
 
-        <input
+        {/* <input
           type="checkbox"
           className={ratepageStyles.btncheck}
           id="btn-check-outlined"
@@ -234,8 +235,10 @@ const RatePage = () => {
         />
         <label className="btn btn-outline-primary" htmlFor="btn-check-outlined">
           FAVORITE COURSE
-        </label>
-
+        </label> */}
+        <button className={ratepageStyles.fav}>
+          <CiHeart className={ratepageStyles.CiHeart}/>
+        </button>
         <button className={ratepageStyles.submit} type="submit">
           SUBMIT
         </button>
