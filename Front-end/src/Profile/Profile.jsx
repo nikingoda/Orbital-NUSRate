@@ -1,9 +1,15 @@
 import { useState } from "react";
 import styles from "./Profile.module.css"; 
+import { useParams } from "react-router-dom";
+
+
+const url = "http://localhost:8080";
 const Profile = () => {
   const [profileImgSrc, setProfileImgSrc] = useState(
     "https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
   );
+  const [profile, setProfile] = useState(null);
+  const { username } = useParams();
 
   const handleAvatarUpload = (e) => {
     const file = e.target.files[0]; 
@@ -20,6 +26,51 @@ const Profile = () => {
   const toggleTheme = () => {
     document.body.classList.toggle(styles.themeAlternate); 
   };
+
+  const fetchProfile = async (url, username) => {
+    try {
+      const response = await fetch(
+        `${url}/api/profile?username=${username}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("User found!");
+        const data = await response.json();
+        return data;
+      } else {
+        console.error("Failed to fetch user:" + response.statusText);
+        return undefined;
+      }
+    } catch (err) {
+      console.error(
+        "There was an error with the fetch operation:" + error.message
+      );
+      return undefined;
+    }
+  }
+  
+
+  useEffect(() => {
+    fetchProfile(url, username)
+      .then((data) => {
+        if (data) {
+          console.log("User data:", data);
+          setUser(data);
+        } else {
+          console.log("No user data found");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting user data:", error);
+        setError(error);
+      });
+  }, [url, username]);
 
   return (
     <div className={styles.profileContainer}>

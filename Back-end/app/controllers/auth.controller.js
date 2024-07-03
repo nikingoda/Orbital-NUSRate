@@ -9,24 +9,20 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = async (req, res) => {
     try {
-        const user = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10)
-        });
-
-        // Save the user
-        const savedUser = await user.save();
-
-        // Find the role
         const role = await Role.findOne({ name: "user" }).exec();
         if (!role) {
             return res.status(500).send({ message: "Role not found!" });
         }
+        const user = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            roles: [role._id],
+            participationDate: new Date()
+        });
 
-        // Assign role to the user and save again
-        savedUser.roles = [role._id];
-        await savedUser.save();
+        // Save the user
+        await user.save();
 
         res.status(201).send({ message: "Registered successfully!" });
     } catch (err) {

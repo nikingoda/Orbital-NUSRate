@@ -21,11 +21,12 @@ const RatePage = () => {
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const [commonRating, setCommonRating] = useState(0);
-  const [review, setReview] = useState("");
+  const [commonRating, setCommonRating] = useState(null);
+  const [review, setReview] = useState(null);
   const [professorName, setProfessorName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
+  const [favourite, setFavourite] = useState(false);
   const loginInfo = localStorage.getItem("loginInfo");
   const date = new Date();
 
@@ -42,6 +43,10 @@ const RatePage = () => {
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
+
+  const handleFavourite = () => {
+    setFavourite(!favourite);
+  }
 
   const handleAddCategory = () => {
     if (selectedCategory && !categories.includes(selectedCategory)) {
@@ -236,10 +241,11 @@ const RatePage = () => {
         <label className="btn btn-outline-primary" htmlFor="btn-check-outlined">
           FAVORITE COURSE
         </label> */}
-        <button className={ratepageStyles.fav}>
-          <CiHeart className={ratepageStyles.CiHeart}/>
+        <button className={ratepageStyles.fav} type = "button" onClick={handleFavourite}>
+          <CiHeart className={favourite ? ratepageStyles.CiHeartActive : ratepageStyles.CiHeart}/>
         </button>
-        <button className={ratepageStyles.submit} type="submit">
+
+        <button className={ratepageStyles.submit} type="submit" onClick={handleSubmit}>
           SUBMIT
         </button>
       </form>

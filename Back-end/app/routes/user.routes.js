@@ -13,6 +13,8 @@ module.exports = app => {
     app.get("/api/test/all", controller.allAccess);
   
     app.get("/user", [authJwt.verifyToken], controller.userBoard);
+
+    app.get("/profile", controller.getProfile);
   
     // app.get(
     //   "/api/test/mod",

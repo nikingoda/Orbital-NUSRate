@@ -90,3 +90,8 @@
 .CiHeart{
   font-size: 30px;
 }
+
+.CiHeartActive {
+  font-size: 30px;
+  color: #ff7900;
+}

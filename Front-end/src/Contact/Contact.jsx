@@ -1,7 +1,9 @@
 import contactStyles from "./Contact.module.css";
 import NavBar from "../NavBar/NavBar";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -23,6 +25,7 @@ const Contact = () => {
     if (res.success) {
       console.log("Success", res);
     }
+    navigate("/");
   };
   return (
     <section className={contactStyles.general}>

@@ -94,7 +94,7 @@ const ReadPage = () => {
         {ratings.map((rating, index) => (
           <div key={index} className={readpageStyles.ratingitem}>
             <p className={readpageStyles.usernamestyle}>
-              <strong>nikingoda</strong>
+              <strong>{rating.username}</strong>
             </p>
             {/* <p>
               <strong>Course Code:</strong> {rating.courseCode}
