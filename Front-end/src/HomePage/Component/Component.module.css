@@ -56,7 +56,7 @@
 .buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: auto; /* Push buttons to the bottom */
+  margin-top: auto; 
 }
 
 .ratebutton,

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import StarRatingComponent from "react-rating-stars-component";
 import categoriesStyles from "./Categories.module.css";
 
 const Categories = ({ categories, onRemoveCategory, onUpdateRating }) => {
@@ -13,7 +12,8 @@ const Categories = ({ categories, onRemoveCategory, onUpdateRating }) => {
     setRatings(initialRatings);
   }, [categories]);
 
-  const handleRatingChange = (category, nextValue) => {
+  const handleRatingChange = (category, event) => {
+    const nextValue = parseInt(event.target.value, 10);
     onUpdateRating(category, nextValue);
     setRatings((prevRatings) => ({
       ...prevRatings,
@@ -26,12 +26,18 @@ const Categories = ({ categories, onRemoveCategory, onUpdateRating }) => {
       {categories.map((category) => (
         <div key={category} className={categoriesStyles.category}>
           <h5>{category}</h5>
-          <StarRatingComponent
-            name={`${category}Rating`}
-            starCount={5}
-            value={ratings[category]}
-            onStarClick={(nextValue) => handleRatingChange(category, nextValue)}
-          />
+          <div className={categoriesStyles.ratingbar}>
+            <input
+              type="range"
+              min="0"
+              max="20"
+              step="1"
+              value={ratings[category]}
+              onChange={(event) => handleRatingChange(category, event)}
+              className={categoriesStyles.ratinginput}
+            />
+            <output>{ratings[category]}</output>
+          </div>
           <button
             className={categoriesStyles.removecategory}
             onClick={() => onRemoveCategory(category)}

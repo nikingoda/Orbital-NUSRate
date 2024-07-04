@@ -30,8 +30,8 @@ const RatePage = () => {
   const loginInfo = localStorage.getItem("loginInfo");
   const date = new Date();
 
-  const handleRatingChange = (nextValue) => {
-    setCommonRating(nextValue);
+  const handleRatingChange = (event) => {
+    setCommonRating(parseInt(event.target.value, 10));
   };
   const handleProfessorChange = (event) => {
     setProfessorName(event.target.value);
@@ -46,7 +46,7 @@ const RatePage = () => {
 
   const handleFavourite = () => {
     setFavourite(!favourite);
-  }
+  };
 
   const handleAddCategory = () => {
     if (selectedCategory && !categories.includes(selectedCategory)) {
@@ -184,13 +184,17 @@ const RatePage = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className={ratepageStyles.starrating}>
-          <StarRatingComponent
-            name="courseRating"
-            starCount={5}
+        <div className={ratepageStyles.ratingbar}>
+          <input
+            type="range"
+            min="0"
+            max="20"
+            step="1"
             value={commonRating}
-            onStarClick={handleRatingChange}
+            onChange={handleRatingChange}
+            className={ratepageStyles.ratinginput}
           />
+          <output>{commonRating}</output>
         </div>
         <textarea
           placeholder="Professor Name"
@@ -216,7 +220,7 @@ const RatePage = () => {
             <option value="">Optional Categories</option>
             <option value="Difficulty">Difficulty</option>
             <option value="Usefulness">Usefulness</option>
-            <option value="Workload">Workload</option>
+            <option value="Workload (hrs)">Workload (hrs)</option>
           </select>
           <button
             type="button"
@@ -241,11 +245,28 @@ const RatePage = () => {
         <label className="btn btn-outline-primary" htmlFor="btn-check-outlined">
           FAVORITE COURSE
         </label> */}
-        <button className={ratepageStyles.fav} type = "button" onClick={handleFavourite}>
-          <CiHeart className={favourite ? ratepageStyles.CiHeartActive : ratepageStyles.CiHeart}/>
-        </button>
+        <div>
+          <button
+            className={ratepageStyles.fav}
+            type="button"
+            onClick={handleFavourite}
+          >
+            <CiHeart
+              className={
+                favourite
+                  ? ratepageStyles.CiHeartActive
+                  : ratepageStyles.CiHeart
+              }
+            />
+          </button>
+          <label>FAVORITE COURSE</label>
+        </div>
 
-        <button className={ratepageStyles.submit} type="submit" onClick={handleSubmit}>
+        <button
+          className={ratepageStyles.submit}
+          type="submit"
+          onClick={handleSubmit}
+        >
           SUBMIT
         </button>
       </form>
