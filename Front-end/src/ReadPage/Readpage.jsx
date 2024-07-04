@@ -90,6 +90,20 @@ const ReadPage = () => {
         <h3>{courseName}</h3>
         <p>{courseDescription}</p>
       </div>
+      <p>
+              <div className={readpageStyles.ratingbar}>
+              <strong>Overall Rating:   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  // value={commonRating}
+                  className={readpageStyles.ratinginput}
+                />
+                {/* <output>{commonRating}</output> */}
+              </div>
+            </p>
       <div className={readpageStyles.ratingslist}>
         {ratings.map((rating, index) => (
           <div key={index} className={readpageStyles.ratingitem}>
@@ -102,8 +116,72 @@ const ReadPage = () => {
             <p>
               <strong>Professor: </strong> {rating.professor}
             </p>
+
+
+            {/* Overall Rating */}
             <p>
-              <strong>Rating:</strong> {rating.commonRating}
+              <div className={readpageStyles.ratingbar}>
+              <strong>Overall Rating:   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  // value={commonRating}
+                  className={readpageStyles.ratinginput}
+                />
+                {/* <output>{commonRating}</output> */}
+              </div>
+            </p>
+
+
+            {/* Difficulty Rating */}
+            <p>
+              <div className={readpageStyles.ratingbar}>
+              <strong>Difficulty Rating:   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  // value={difficultyRating}
+                  className={readpageStyles.ratinginput}
+                />
+                {/* <output>{difficultyRating}</output> */}
+              </div>
+            </p>
+
+            {/* Usefullness Rating */}
+            <p>
+              <div className={readpageStyles.ratingbar}>
+              <strong>Usefullness Rating:   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  // value={usefullnessRating}
+                  className={readpageStyles.ratinginput}
+                />
+                {/* <output>{usefullnessRating}</output> */}
+              </div>
+            </p>
+
+
+            {/* Workload Rating */}
+            <p>
+              <div className={readpageStyles.ratingbar}>
+              <strong>Workload Rating:   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  // value={workloadRating}
+                  className={readpageStyles.ratinginput}
+                />
+                {/* <output>{workloadRating}</output> */}
+              </div>
             </p>
             <p>
               <strong></strong> {rating.review}

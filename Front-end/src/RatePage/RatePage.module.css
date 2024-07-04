@@ -133,7 +133,7 @@
   background: #ff7900;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -5px; /* Adjust for vertical alignment */
+  margin-top: -5px; 
 }
 
 .ratinginput[type="range"]::-moz-range-track {
