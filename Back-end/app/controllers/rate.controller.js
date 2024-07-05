@@ -10,6 +10,7 @@ exports.rate = async (req, res) => {
 
         const user = req.body.user;
         const course = req.body.course;
+        const username = req.body.userName;
 
         await Rate.deleteMany({user, course});
 
@@ -18,7 +19,7 @@ exports.rate = async (req, res) => {
             user: req.body.user,
             commonRating: req.body.commonRating,
             courseCode: req.body.courseCode,
-            userName: User.findById(req.body.user).username,
+            userName: username,
             // usefulness: req.body.usefulness,
             // difficulty: req.body.difficulty,
             // workload: req.body.workload,

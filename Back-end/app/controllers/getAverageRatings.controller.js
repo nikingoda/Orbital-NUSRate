@@ -23,8 +23,9 @@ exports.getAverageRating = async (req, res) => {
                     averageWorkload: { $avg: "$workload" }
                   }
                 }
-             ]);
+             ]).exec();
              if(result.length > 0) {
+              console.log(result[0]);
                 res.status(200).send({
                   commonRating: result[0].averageCommonRating,
                   difficultyRating: result[0].averageDifficulty,

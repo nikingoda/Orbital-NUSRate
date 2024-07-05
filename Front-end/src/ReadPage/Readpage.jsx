@@ -95,7 +95,7 @@ const ReadPage = () => {
           console.log("Course data:", data);
           setCommonRating(data.commonRating);
           setDifficultyRating(data.difficultyRating);
-          setUsefullnessRating(data.usefullnessRating);
+          setUsefullnessRating(data.usefulnessRating);
           setWorkloadRating(data.workloadRating);
         } else {
           console.log("No course data found");
@@ -231,10 +231,10 @@ const ReadPage = () => {
                   min="0"
                   max="20"
                   step="1"
-                  value={rating.difficultyRating === undefined ? 0 : rating.difficultyRating}
+                  value={rating.difficulty === undefined ? 0 : rating.difficulty}
                   className={readpageStyles.ratinginput}
                 />
-                <output>{rating.difficultyRating === undefined ? "No rating" : rating.difficultyRating}</output>
+                <output>{rating.difficulty === undefined ? "No rating" : rating.difficulty}</output>
               </div>
             </p>
 
@@ -247,10 +247,10 @@ const ReadPage = () => {
                   min="0"
                   max="20"
                   step="1"
-                  value={rating.usefullness === undefined ? 0 : rating.usefullness}
+                  value={rating.usefulness === undefined ? 0 : rating.usefulness}
                   className={readpageStyles.ratinginput}
                 />
-                <output>{rating.usefullness === undefined ? "No rating" : rating.usefullness}</output>
+                <output>{rating.usefulness === undefined ? "No rating" : rating.usefulness}</output>
               </div>
             </p>
 

@@ -75,6 +75,7 @@ const RatePage = () => {
         navigate("/login");
       } else {
         const user = JSON.parse(loginInfo).userID;
+        const userName = JSON.parse(loginInfo).username;
         const res = await fetch(url + "/api/rate", {
           method: "POST",
           headers: {
@@ -83,6 +84,7 @@ const RatePage = () => {
           body: JSON.stringify({
             user,
             courseCode,
+            userName,
             commonRating,
             review,
             categoryRatings: storedRatings,
@@ -163,7 +165,7 @@ const RatePage = () => {
     return <div></div>;
   }
 
-  const professorNames = course.professors;
+  // const professorNames = course.professors;
   const courseName = course.courseName;
   const courseDescription = course.courseDescription;
 
@@ -174,13 +176,13 @@ const RatePage = () => {
       <div className={ratepageStyles.courseinformation}>
         <h2 className={ratepageStyles.coursecode}>{courseCode}</h2>
         <h3 className={ratepageStyles.coursename}>{courseName}</h3>
-        <span className={ratepageStyles.professornames}>
+        {/* <span className={ratepageStyles.professornames}>
           {professorNames.map((professor, index) => (
             <h4 key={index} className={ratepageStyles.professorname}>
               {professor}
             </h4>
           ))}
-        </span>
+        </span> */}
         <p className={ratepageStyles.coursedescription}>{courseDescription}</p>
       </div>
 
@@ -221,7 +223,7 @@ const RatePage = () => {
             <option value="">Optional Categories</option>
             <option value="Difficulty">Difficulty</option>
             <option value="Usefulness">Usefulness</option>
-            <option value="Workload (hrs)">Workload (hrs)</option>
+            <option value="Workload">Workload (hrs)</option>
           </select>
           <button
             type="button"
