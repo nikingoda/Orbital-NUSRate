@@ -22,6 +22,7 @@ exports.rate = async (req, res) => {
             // usefulness: req.body.usefulness,
             // difficulty: req.body.difficulty,
             // workload: req.body.workload,
+            professorName: req.body.professorName,
             review: req.body.review,
             date: req.body.date
         });

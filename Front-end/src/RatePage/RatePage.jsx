@@ -23,7 +23,7 @@ const RatePage = () => {
   const navigate = useNavigate();
   const [commonRating, setCommonRating] = useState(null);
   const [review, setReview] = useState(null);
-  const [professorName, setProfessorName] = useState("");
+  const [professorName, setProfessorName] = useState('');
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [favourite, setFavourite] = useState(false);
@@ -86,6 +86,7 @@ const RatePage = () => {
             commonRating,
             review,
             categoryRatings: storedRatings,
+            professorName,
             date,
           }),
         });

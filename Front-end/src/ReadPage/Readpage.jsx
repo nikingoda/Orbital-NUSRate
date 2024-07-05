@@ -11,11 +11,43 @@ const ReadPage = () => {
   const [ratings, setRatings] = useState([]);
   const [error, setError] = useState(null);
   const [course, setCourse] = useState(null);
+  const [commonRating, setCommonRating] = useState(undefined);
+  const [difficultyRating, setDifficultyRating] = useState(undefined);
+  const [usefullnessRating, setUsefullnessRating] = useState(undefined);
+  const [workloadRating, setWorkloadRating] = useState(undefined);
 
   const fetchCourse = async (url, courseCode) => {
     try {
       const response = await fetch(
         `${url}/api/getCourse?courseCode=${courseCode}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Course found!");
+        const data = await response.json();
+        return data;
+      } else {
+        console.error("Failed to fetch course:" + response.statusText);
+        return undefined;
+      }
+    } catch (error) {
+      console.error(
+        "There was an error with the fetch operation:" + error.message
+      );
+      return undefined;
+    }
+  };
+
+  const fetchAverageRating = async (url, courseCode) => {
+    try {
+      const response = await fetch(
+        `${url}/api/averageRating?courseCode=${courseCode}`,
         {
           method: "GET",
           headers: {
@@ -46,6 +78,25 @@ const ReadPage = () => {
         if (data) {
           console.log("Course data:", data);
           setCourse(data);
+        } else {
+          console.log("No course data found");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting course data:", error);
+        setError(error);
+      });
+  }, [url, courseCode]);
+
+  useEffect(() => {
+    fetchAverageRating(url, courseCode)
+      .then((data) => {
+        if (data) {
+          console.log("Course data:", data);
+          setCommonRating(data.commonRating);
+          setDifficultyRating(data.difficultyRating);
+          setUsefullnessRating(data.usefullnessRating);
+          setWorkloadRating(data.workloadRating);
         } else {
           console.log("No course data found");
         }
@@ -92,29 +143,65 @@ const ReadPage = () => {
       </div>
       <p>
               <div className={readpageStyles.ratingbar}>
-              <strong>Overall Rating:   </strong> 
+              <strong>Average Overall Rating:   </strong> 
                 <input
                   type="range"
                   min="0"
                   max="20"
                   step="1"
-                  // value={commonRating}
+                  value={commonRating === undefined ? 0 : commonRating}
                   className={readpageStyles.ratinginput}
                 />
-                {/* <output>{commonRating}</output> */}
+                <output>{commonRating === undefined ? "No data" : commonRating}</output>
+              </div>
+
+              <div className={readpageStyles.ratingbar}>
+              <strong>Average Difficulty Rating:   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  value={difficultyRating === null ? 0 : difficultyRating}
+                  className={readpageStyles.ratinginput}
+                />
+                <output>{difficultyRating === null ? "No data" : difficultyRating}</output>
+              </div>
+
+              <div className={readpageStyles.ratingbar}>
+              <strong>Average Usefullness Rating:   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  value={usefullnessRating === undefined ? 0 : usefullnessRating}
+                  className={readpageStyles.ratinginput}
+                />
+                <output>{usefullnessRating === undefined ? "No data" : usefullnessRating}</output>
+              </div>
+
+              <div className={readpageStyles.ratingbar}>
+              <strong>Average workload(hours):   </strong> 
+                <input
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="1"
+                  value={workloadRating === null ? 0 : workloadRating}
+                  className={readpageStyles.ratinginput}
+                />
+                <output>{workloadRating === null ? "No data" : workloadRating}</output>
               </div>
             </p>
       <div className={readpageStyles.ratingslist}>
         {ratings.map((rating, index) => (
           <div key={index} className={readpageStyles.ratingitem}>
             <p className={readpageStyles.usernamestyle}>
-              <strong>{rating.username}</strong>
+              <strong></strong> {rating.userName}
             </p>
-            {/* <p>
-              <strong>Course Code:</strong> {rating.courseCode}
-            </p> */}
             <p>
-              <strong>Professor: </strong> {rating.professor}
+              <strong>Professor: </strong> {rating.professors}
             </p>
 
 
@@ -127,10 +214,10 @@ const ReadPage = () => {
                   min="0"
                   max="20"
                   step="1"
-                  // value={commonRating}
+                  value={rating.commonRating}
                   className={readpageStyles.ratinginput}
                 />
-                {/* <output>{commonRating}</output> */}
+                <output>{rating.commonRating}</output>
               </div>
             </p>
 
@@ -144,10 +231,10 @@ const ReadPage = () => {
                   min="0"
                   max="20"
                   step="1"
-                  // value={difficultyRating}
+                  value={rating.difficultyRating === undefined ? 0 : rating.difficultyRating}
                   className={readpageStyles.ratinginput}
                 />
-                {/* <output>{difficultyRating}</output> */}
+                <output>{rating.difficultyRating === undefined ? "No rating" : rating.difficultyRating}</output>
               </div>
             </p>
 
@@ -160,10 +247,10 @@ const ReadPage = () => {
                   min="0"
                   max="20"
                   step="1"
-                  // value={usefullnessRating}
+                  value={rating.usefullness === undefined ? 0 : rating.usefullness}
                   className={readpageStyles.ratinginput}
                 />
-                {/* <output>{usefullnessRating}</output> */}
+                <output>{rating.usefullness === undefined ? "No rating" : rating.usefullness}</output>
               </div>
             </p>
 
@@ -171,16 +258,16 @@ const ReadPage = () => {
             {/* Workload Rating */}
             <p>
               <div className={readpageStyles.ratingbar}>
-              <strong>Workload Rating:   </strong> 
+              <strong>Workload(hours) Rating:   </strong> 
                 <input
                   type="range"
                   min="0"
                   max="20"
                   step="1"
-                  // value={workloadRating}
+                  value={rating.workload === undefined ? 0 : rating.workload}
                   className={readpageStyles.ratinginput}
                 />
-                {/* <output>{workloadRating}</output> */}
+                <output>{rating.workload === undefined ? "No rating" : rating.workload}</output>
               </div>
             </p>
             <p>
@@ -204,9 +291,9 @@ const ReadPage = () => {
               <strong>Date:</strong>{" "}
               {new Date(rating.date).toLocaleDateString()}
             </p>
-            <p>
+            {/* <p>
               <strong>Favorite Count:</strong> {rating.favoriteCount}
-            </p>
+            </p> */}
           </div>
         ))}
       </div>

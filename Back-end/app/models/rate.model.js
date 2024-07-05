@@ -18,6 +18,7 @@ const Rate = mongoose.model(
         usefulness: Number,
         workload: Number,
         review: String,
+        professorName: String,
         date: Date
     })
 );

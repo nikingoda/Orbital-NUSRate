@@ -31,6 +31,7 @@ function LoginForm() {
           "loginInfo",
           JSON.stringify({
             userID: data.id,
+            username: data.username,
             loginToken: data.accessToken,
           })
         );
