@@ -5,7 +5,7 @@ import StarRatingComponent from "react-rating-stars-component";
 import NavBar from "../NavBar/NavBar";
 import { useParams } from "react-router-dom";
 
-const url = "http://localhost:8080";
+const url = "https://orbital-nusrate.onrender.com";
 const ReadPage = () => {
   const { courseCode } = useParams();
   const [ratings, setRatings] = useState([]);

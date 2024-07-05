@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import component from "./Component.module.css";
 import { useNavigate } from "react-router-dom";
 
-const urlRating = "http://localhost:5173/api/submitRating";
+const urlRating = "https://orbital-nusrate.onrender.com/api/submitRating";
 
 function Component({ course }) {
   const navigate = useNavigate();

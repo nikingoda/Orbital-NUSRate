@@ -11,7 +11,7 @@ function RegisterForm() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordAgain, setPasswordAgain] = useState();
-  const url = "http://localhost:8080/api/auth/signup";
+  const url = "https://orbital-nusrate.onrender.com/api/auth/signup";
   const handleClick = async (event) => {
     event.preventDefault();
     try {

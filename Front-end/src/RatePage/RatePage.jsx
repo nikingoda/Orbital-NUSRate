@@ -7,7 +7,7 @@ import NavBar from "../NavBar/NavBar";
 import { CiHeart } from "react-icons/ci";
 // import { course } from "../../../Back-end/app/models";
 
-const url = "http://localhost:8080";
+const url = "https://orbital-nusrate.onrender.com";
 const RatePage = () => {
   const { courseCode } = useParams();
   // const [courseName, setCourseName] = useState(null);

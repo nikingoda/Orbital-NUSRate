@@ -6,7 +6,7 @@ import Footer from "./Footer/Footer";
 import homepageStyles from "./HomePage.module.css";
 import { CiSearch } from "react-icons/ci";
 
-const urlCourses = "http://localhost:8080/api/course";
+const urlCourses = "https://orbital-nusrate.onrender.com/api/course";
 
 const HomePage = () => {
   const [courses, setCourses] = useState([]);

@@ -4,7 +4,7 @@ import { FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 
-const url = "http://localhost:8080/api/auth/reset";
+const url = "https://orbital-nusrate.onrender.com/api/auth/reset";
 
 const Reset = () => {
   const navigate = useNavigate();

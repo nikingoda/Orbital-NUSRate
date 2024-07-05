@@ -3,7 +3,7 @@ import navbarStyles from "./NavBar.module.css";
 import { useEffect, useState } from "react";
 
 
-const url = "http://localhost:8080";
+const url = "https://orbital-nusrate.onrender.com";
 const NavBar = () => {
   const [error, setError] = useState(null);
   const [state, setState] = useState(false);
