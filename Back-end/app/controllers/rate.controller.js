@@ -9,10 +9,10 @@ exports.rate = async (req, res) => {
         }
 
         const user = req.body.user;
-        const course = req.body.course;
+        const courseCode = req.body.courseCode;
         const username = req.body.userName;
 
-        await Rate.deleteOne({user: user, course: course}); //delete previous rating if user has rated this course before
+        await Rate.deleteOne({user: user, courseCode: courseCode}); //delete previous rating if user has rated this course before
 
         const rate = new Rate({
             course: req.body.course,
