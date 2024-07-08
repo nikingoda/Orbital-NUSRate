@@ -2,12 +2,16 @@
   "name": "authentication-backend",
   "private": true,
   "version": "1.0.0",
-  "description": "Node.js + MongoDB: JWT Authentication & Authorization",
+  "description": "NUSRate backend",
   "main": "app/server.js",
   "scripts": {
+    "dev": "cd app && node server.js",
+    "build": "vite build",
+    "start": "cd app && NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
-  "author": "",
+  "author": "Ngo Duc Anh & Bui The Trung",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -16,5 +20,8 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.0"
+  },
+  "engines": {
+    "node": ">=18.17.0"
   }
 }

@@ -162,10 +162,10 @@ const ReadPage = () => {
                   min="0"
                   max="20"
                   step="1"
-                  value={difficultyRating === null ? 0 : difficultyRating}
+                  value={difficultyRating === null || difficultyRating === undefined ? 0 : difficultyRating}
                   className={readpageStyles.ratinginput}
                 />
-                <output>{difficultyRating === null ? "No data" : difficultyRating}</output>
+                <output>{difficultyRating === null || difficultyRating === undefined ? "No data" : difficultyRating}</output>
               </div>
 
               <div className={readpageStyles.ratingbar}>
@@ -188,10 +188,10 @@ const ReadPage = () => {
                   min="0"
                   max="20"
                   step="1"
-                  value={workloadRating === null ? 0 : workloadRating}
+                  value={workloadRating === null || workloadRating === undefined ? 0 : workloadRating}
                   className={readpageStyles.ratinginput}
                 />
-                <output>{workloadRating === null ? "No data" : workloadRating}</output>
+                <output>{workloadRating === null || workloadRating === undefined ? "No data" : workloadRating}</output>
               </div>
             </p>
       <div className={readpageStyles.ratingslist}>
