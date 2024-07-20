@@ -6,6 +6,7 @@ import NavBar from "../NavBar/NavBar";
 import { useParams } from "react-router-dom";
 
 const url = "https://orbital-nusrate.onrender.com";
+const devurl = "http://localhost:8080";
 const ReadPage = () => {
   const { courseCode } = useParams();
   const [ratings, setRatings] = useState([]);

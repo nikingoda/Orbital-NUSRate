@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 
 const url = "https://orbital-nusrate.onrender.com";
+const devurl = "http://localhost:8080";
 const NavBar = () => {
   const [error, setError] = useState(null);
   const [state, setState] = useState(false);

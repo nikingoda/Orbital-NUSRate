@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 
 const url = "https://orbital-nusrate.onrender.com/api/auth/reset";
+const devurl = "http://localhost:8080/api/auth/reset";
 
 const Reset = () => {
   const navigate = useNavigate();

@@ -8,6 +8,7 @@ import { CiHeart } from "react-icons/ci";
 // import { course } from "../../../Back-end/app/models";
 
 const url = "https://orbital-nusrate.onrender.com";
+const devurl = "http://localhost:8080";
 const RatePage = () => {
   const { courseCode } = useParams();
   // const [courseName, setCourseName] = useState(null);

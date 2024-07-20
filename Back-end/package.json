@@ -9,7 +9,6 @@
     "build": "vite build",
     "start": "cd app && NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
   "author": "Ngo Duc Anh & Bui The Trung",
   "license": "ISC",
@@ -23,5 +22,6 @@
   },
   "engines": {
     "node": ">=18.17.0"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
