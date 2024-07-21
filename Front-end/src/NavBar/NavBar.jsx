@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import navbarStyles from "./NavBar.module.css";
 import { useEffect, useState } from "react";
 
-
 const url = "https://orbital-nusrate.onrender.com";
 const devurl = "http://localhost:8080";
 const NavBar = () => {
@@ -15,33 +14,31 @@ const NavBar = () => {
       const res = await fetch(url + "/user", {
         method: "GET",
         headers: {
-          "x-access-token": JSON.parse(loginInfo).loginToken
-        }
+          "x-access-token": JSON.parse(loginInfo).loginToken,
+        },
       });
-      if(res.status === 200) {
-        console.log("ok")
+      if (res.status === 200) {
+        console.log("ok");
         return true;
       } else {
         return false;
       }
-
     } catch (err) {
       return false;
     }
-
   };
 
   useEffect(() => {
     verifyToken()
-    .then((s) => {
-      setState(s);
-    })
-    .catch((error) => {
-      console.error(error);
-      setError(error);
-    });
+      .then((s) => {
+        setState(s);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error);
+      });
   });
-  
+
   if (!state) {
     return (
       <div className={navbarStyles.navbar}>
@@ -107,8 +104,10 @@ const NavBar = () => {
             <a href="/contact">CONTACT</a>
           </li>
           <li>
-            <a href = "#">ACCOUNT</a>
+            <a href="#">ACCOUNT</a>
           </li>
+        </ul>
+        <ul>
           <li onClick={logOut}>
             <a className={navbarStyles.reglog} href="/login">
               LOG OUT
