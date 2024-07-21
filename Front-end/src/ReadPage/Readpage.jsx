@@ -4,6 +4,9 @@ import readpageStyles from "./ReadPage.module.css";
 import StarRatingComponent from "react-rating-stars-component";
 import NavBar from "../NavBar/NavBar";
 import { useParams } from "react-router-dom";
+import { FaRegGrinHearts } from "react-icons/fa";
+import { AiFillLike } from "react-icons/ai";
+import { AiFillDislike } from "react-icons/ai";
 
 const url = "https://orbital-nusrate.onrender.com";
 const devurl = "http://localhost:8080";
@@ -123,7 +126,37 @@ const ReadPage = () => {
 
     fetchRatings();
   }, [courseCode]);
+  const handleLike = async (ratingId) => {
+    try {
+      await axios.post(`.../api/likeRating`, { ratingId });
+      // Replace ...
+      setRatings((prevRatings) =>
+        prevRatings.map((rating) =>
+          rating._id === ratingId
+            ? { ...rating, likes: rating.likes + 1 }
+            : rating
+        )
+      );
+    } catch (error) {
+      console.error("Error liking rating:", error);
+    }
+  };
 
+  const handleDislike = async (ratingId) => {
+    try {
+      await axios.post(`.../api/dislikeRating`, { ratingId });
+      // Replace ...
+      setRatings((prevRatings) =>
+        prevRatings.map((rating) =>
+          rating._id === ratingId
+            ? { ...rating, dislikes: rating.dislikes + 1 }
+            : rating
+        )
+      );
+    } catch (error) {
+      console.error("Error disliking rating:", error);
+    }
+  };
   const courseName = course ? course.courseName : "";
   const courseDescription = course ? course.courseDescription : "";
 
@@ -143,58 +176,86 @@ const ReadPage = () => {
         <p>{courseDescription}</p>
       </div>
       <p>
-              <div className={readpageStyles.ratingbar}>
-              <strong>Average Overall Rating:   </strong> 
-                <input
-                  type="range"
-                  min="0"
-                  max="20"
-                  step="1"
-                  value={commonRating === undefined ? 0 : commonRating}
-                  className={readpageStyles.ratinginput}
-                />
-                <output>{commonRating === undefined ? "No data" : commonRating}</output>
-              </div>
+        <div className={readpageStyles.ratingbar}>
+          <strong>Average Overall Rating: </strong>
+          <input
+            type="range"
+            min="0"
+            max="20"
+            step="1"
+            value={commonRating === undefined ? 0 : commonRating}
+            className={readpageStyles.ratinginput}
+          />
+          <output>
+            {commonRating === undefined ? "No data" : commonRating}
+          </output>
+        </div>
 
-              <div className={readpageStyles.ratingbar}>
-              <strong>Average Difficulty Rating:   </strong> 
-                <input
-                  type="range"
-                  min="0"
-                  max="20"
-                  step="1"
-                  value={difficultyRating === null || difficultyRating === undefined ? 0 : difficultyRating}
-                  className={readpageStyles.ratinginput}
-                />
-                <output>{difficultyRating === null || difficultyRating === undefined ? "No data" : difficultyRating}</output>
-              </div>
+        <div className={readpageStyles.ratingbar}>
+          <strong>Average Difficulty Rating: </strong>
+          <input
+            type="range"
+            min="0"
+            max="20"
+            step="1"
+            value={
+              difficultyRating === null || difficultyRating === undefined
+                ? 0
+                : difficultyRating
+            }
+            className={readpageStyles.ratinginput}
+          />
+          <output>
+            {difficultyRating === null || difficultyRating === undefined
+              ? "No data"
+              : difficultyRating}
+          </output>
+        </div>
 
-              <div className={readpageStyles.ratingbar}>
-              <strong>Average Usefullness Rating:   </strong> 
-                <input
-                  type="range"
-                  min="0"
-                  max="20"
-                  step="1"
-                  value={usefullnessRating === undefined ? 0 : usefullnessRating}
-                  className={readpageStyles.ratinginput}
-                />
-                <output>{usefullnessRating === undefined ? "No data" : usefullnessRating}</output>
-              </div>
+        <div className={readpageStyles.ratingbar}>
+          <strong>Average Usefullness Rating: </strong>
+          <input
+            type="range"
+            min="0"
+            max="20"
+            step="1"
+            value={usefullnessRating === undefined ? 0 : usefullnessRating}
+            className={readpageStyles.ratinginput}
+          />
+          <output>
+            {usefullnessRating === undefined ? "No data" : usefullnessRating}
+          </output>
+        </div>
 
-              <div className={readpageStyles.ratingbar}>
-              <strong>Average workload(hours):   </strong> 
-                <input
-                  type="range"
-                  min="0"
-                  max="20"
-                  step="1"
-                  value={workloadRating === null || workloadRating === undefined ? 0 : workloadRating}
-                  className={readpageStyles.ratinginput}
-                />
-                <output>{workloadRating === null || workloadRating === undefined ? "No data" : workloadRating}</output>
-              </div>
-            </p>
+        <div className={readpageStyles.ratingbar}>
+          <strong>Average workload(hours): </strong>
+          <input
+            type="range"
+            min="0"
+            max="20"
+            step="1"
+            value={
+              workloadRating === null || workloadRating === undefined
+                ? 0
+                : workloadRating
+            }
+            className={readpageStyles.ratinginput}
+          />
+          <output>
+            {workloadRating === null || workloadRating === undefined
+              ? "No data"
+              : workloadRating}
+          </output>
+        </div>
+        <div className={readpageStyles.ratingbar}>
+          {/* Replace 0 with variable */}
+          <strong>There are </strong>{" "}
+          <strong className={readpageStyles.numberlove}>0</strong>
+          <strong> people love this course </strong>
+          <FaRegGrinHearts />
+          <span>{readpageStyles.favoriteCount}</span>
+        </div>
+      </p>
       <div className={readpageStyles.ratingslist}>
         {ratings.map((rating, index) => (
           <div key={index} className={readpageStyles.ratingitem}>
@@ -205,11 +266,10 @@ const ReadPage = () => {
               <strong>Professor: </strong> {rating.professors}
             </p>
 
-
             {/* Overall Rating */}
             <p>
               <div className={readpageStyles.ratingbar}>
-              <strong>Overall Rating:   </strong> 
+                <strong>Overall Rating: </strong>
                 <input
                   type="range"
                   min="0"
@@ -222,44 +282,54 @@ const ReadPage = () => {
               </div>
             </p>
 
-
             {/* Difficulty Rating */}
             <p>
               <div className={readpageStyles.ratingbar}>
-              <strong>Difficulty Rating:   </strong> 
+                <strong>Difficulty Rating: </strong>
                 <input
                   type="range"
                   min="0"
                   max="20"
                   step="1"
-                  value={rating.difficulty === undefined ? 0 : rating.difficulty}
+                  value={
+                    rating.difficulty === undefined ? 0 : rating.difficulty
+                  }
                   className={readpageStyles.ratinginput}
                 />
-                <output>{rating.difficulty === undefined ? "No rating" : rating.difficulty}</output>
+                <output>
+                  {rating.difficulty === undefined
+                    ? "No rating"
+                    : rating.difficulty}
+                </output>
               </div>
             </p>
 
             {/* Usefullness Rating */}
             <p>
               <div className={readpageStyles.ratingbar}>
-              <strong>Usefullness Rating:   </strong> 
+                <strong>Usefullness Rating: </strong>
                 <input
                   type="range"
                   min="0"
                   max="20"
                   step="1"
-                  value={rating.usefulness === undefined ? 0 : rating.usefulness}
+                  value={
+                    rating.usefulness === undefined ? 0 : rating.usefulness
+                  }
                   className={readpageStyles.ratinginput}
                 />
-                <output>{rating.usefulness === undefined ? "No rating" : rating.usefulness}</output>
+                <output>
+                  {rating.usefulness === undefined
+                    ? "No rating"
+                    : rating.usefulness}
+                </output>
               </div>
             </p>
-
 
             {/* Workload Rating */}
             <p>
               <div className={readpageStyles.ratingbar}>
-              <strong>Workload(hours) Rating:   </strong> 
+                <strong>Workload(hours) Rating: </strong>
                 <input
                   type="range"
                   min="0"
@@ -268,7 +338,11 @@ const ReadPage = () => {
                   value={rating.workload === undefined ? 0 : rating.workload}
                   className={readpageStyles.ratinginput}
                 />
-                <output>{rating.workload === undefined ? "No rating" : rating.workload}</output>
+                <output>
+                  {rating.workload === undefined
+                    ? "No rating"
+                    : rating.workload}
+                </output>
               </div>
             </p>
             <p>
@@ -292,9 +366,20 @@ const ReadPage = () => {
               <strong>Date:</strong>{" "}
               {new Date(rating.date).toLocaleDateString()}
             </p>
-            {/* <p>
-              <strong>Favorite Count:</strong> {rating.favoriteCount}
-            </p> */}
+            <div className={readpageStyles.ratingactions}>
+              <button
+                onClick={() => handleLike(rating._id)}
+                className={readpageStyles.likebutton}
+              >
+                <span>{rating.likes}</span> <AiFillLike />
+              </button>
+              <button
+                onClick={() => handleDislike(rating._id)}
+                className={readpageStyles.dislikebutton}
+              >
+                <span>{rating.dislikes}</span> <AiFillDislike />
+              </button>
+            </div>
           </div>
         ))}
       </div>

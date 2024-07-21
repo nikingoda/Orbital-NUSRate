@@ -139,3 +139,43 @@
 .ratinginput[type="range"]:focus::-webkit-slider-runnable-track {
   background: linear-gradient(to right, #0055a4, #ff7900);
 }
+
+.numberlove, FaRegGrinHearts{
+  color: rgb(142, 10, 87);
+}
+.ratingactions{
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+.likebutton, .dislikebutton{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 25px;
+}
+
+.likebutton:hover,
+.dislikebutton:hover {
+  background-color: #e0e0e0;
+}
+
+.likebutton:active,
+.dislikebutton:active {
+  background-color: #d0d0d0;
+}
+
+.likebutton {
+  color: #4caf50;
+}
+
+.dislikebutton {
+  color: #f44336;
+}
