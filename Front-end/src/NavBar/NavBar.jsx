@@ -103,11 +103,11 @@ const NavBar = () => {
           <li>
             <a href="/contact">CONTACT</a>
           </li>
+        </ul>
+        <ul>
           <li>
             <a href="#">ACCOUNT</a>
           </li>
-        </ul>
-        <ul>
           <li onClick={logOut}>
             <a className={navbarStyles.reglog} href="/login">
               LOG OUT
