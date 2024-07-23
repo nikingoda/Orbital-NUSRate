@@ -1,0 +1,355 @@
+{
+  "majors": [
+    {
+      "name": "Computer Engineering",
+      "tracks": [
+        {
+          "name": "Smart Mechanism Design",
+          "courses": [
+            { "id": 1, "title": "ME4245 Robot Mechanics and Control" },
+            { "id": 2, "title": "BN4601 Intelligent Medical Robotics" },
+            { "id": 3, "title": "ME4242 Soft Robotics" },
+            {
+              "id": 4,
+              "title": "MLE4228 Material for Robotic Sensing and Actuation"
+            }
+          ]
+        },
+        {
+          "name": "Robot Intelligence",
+          "courses": [
+            { "id": 5, "title": "EE4308 Autonomous Robot Systems" },
+            {
+              "id": 6,
+              "title": "EE4305 Fuzzy/Neural Systems for Intelligent Robotics"
+            },
+            { "id": 7, "title": "EE4309 Robot Perception" },
+            { "id": 8, "title": "ME4245 Robot Mechanics and Control" },
+            { "id": 9, "title": "ME5406 Deep Learning for Robotics" }
+          ]
+        },
+        {
+          "name": "Collaborative Systems",
+          "courses": [
+            { "id": 10, "title": "EE4705 Human-Robot Interactions" },
+            { "id": 11, "title": "ME4242 Soft Robotics" },
+            { "id": 12, "title": "BN4203 Robotics in Rehabilitation" },
+            { "id": 13, "title": "ME5406 Deep Learning for Robotics" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Computer Science",
+      "tracks": [
+        {
+          "name": "Algorithm and Theory",
+          "courses": [
+            {
+              "id": 14,
+              "title": "CS3230 Design and Analysis of Algorithms (CFM)"
+            },
+            { "id": 15, "title": "CS3231 Theory of Computation" },
+            { "id": 16, "title": "CS3236 Introduction to Information Theory" },
+            { "id": 17, "title": "CS4231 Parallel and Distributed Algorithms" },
+            { "id": 18, "title": "CS4234 Optimisation Algorithms" },
+            { "id": 19, "title": "CS3233 Competitive Programming" },
+            { "id": 20, "title": "CS4257 Algorithmic Foundations of Privacy" },
+            { "id": 21, "title": "CS4261 Algorithmic Mechanism Design" },
+            { "id": 22, "title": "CS4268 Quantum Computing" },
+            {
+              "id": 23,
+              "title": "CS4269 Fundamentals of Logic in Computer Science"
+            },
+            {
+              "id": 24,
+              "title": "CS4330 Combinatorial Methods in Bioinformatics"
+            },
+            { "id": 25, "title": "CS5230 Computational Complexity" },
+            { "id": 26, "title": "CS5234 Algorithms at Scale" },
+            { "id": 27, "title": "CS5236 Advanced Automata Theory" },
+            {
+              "id": 28,
+              "title": "CS5237 Computational Geometry and Applications"
+            },
+            {
+              "id": 29,
+              "title": "CS5238 Advanced Combinatorial Methods in Bioinformatics"
+            },
+            { "id": 30, "title": "CS5330 Randomized Algorithms" }
+          ]
+        },
+        {
+          "name": "Artificial Intelligence",
+          "courses": [
+            {
+              "id": 31,
+              "title": "CS2109S Introduction to AI and Machine Learning (CFM)"
+            },
+            {
+              "id": 32,
+              "title": "CS3243 Introduction to Artificial Intelligence"
+            },
+            { "id": 33, "title": "CS3244 Machine Learning" },
+            {
+              "id": 34,
+              "title": "CS3263 Foundations of Artificial Intelligence"
+            },
+            { "id": 35, "title": "CS3264 Foundations of Machine Learning" },
+            {
+              "id": 36,
+              "title": "CS4243 Computer Vision and Pattern Recognition"
+            },
+            {
+              "id": 37,
+              "title": "CS4244 Knowledge Representation and Reasoning"
+            },
+            { "id": 38, "title": "CS4246 AI Planning and Decision Making" },
+            { "id": 39, "title": "CS4248 Natural Language Processing" },
+            {
+              "id": 40,
+              "title": "CS4220 Knowledge Discovery Methods in Bioinformatics"
+            },
+            { "id": 41, "title": "CS4261 Algorithmic Mechanism Design" },
+            {
+              "id": 42,
+              "title": "CS4269 Fundamentals of Logic in Computer Science"
+            },
+            { "id": 43, "title": "CS4277 3D Computer Vision" },
+            {
+              "id": 44,
+              "title": "CS4278 Intelligent Robots: Algorithms and Systems"
+            },
+            { "id": 45, "title": "CS5215 Constraint Processing" },
+            { "id": 46, "title": "CS5228 Knowledge Discovery and Data Mining" },
+            { "id": 47, "title": "CS5242 Neural Networks and Deep Learning" },
+            {
+              "id": 48,
+              "title": "CS5260 Neural Networks and Deep Learning II"
+            },
+            { "id": 49, "title": "CS5340 Uncertainty Modelling in AI" },
+            {
+              "id": 50,
+              "title": "CS5339 Theory and Algorithms for Machine Learning"
+            }
+          ]
+        },
+        {
+          "name": "Computer Graphics and Games",
+          "courses": [
+            { "id": 51, "title": "CS3241 Computer Graphics" },
+            { "id": 52, "title": "CS3242 3D Modelling and Animation" },
+            { "id": 53, "title": "CS3247 Game Development" },
+            { "id": 54, "title": "CS4247 Graphics Rendering Techniques" },
+            { "id": 55, "title": "CS4350 Game Development Project" },
+            {
+              "id": 56,
+              "title": "CS3218 Multimodal Processing in Mobile Platforms"
+            },
+            { "id": 57, "title": "CS3240 Interaction Design" },
+            { "id": 58, "title": "CS3249 User Interface Development" },
+            {
+              "id": 59,
+              "title": "CS4240 Interaction Design for Virtual and Augmented Reality"
+            },
+            {
+              "id": 60,
+              "title": "CS4243 Computer Vision and Pattern Recognition"
+            },
+            { "id": 61, "title": "CS4249 Phenomena and Theories of HCI" },
+            { "id": 62, "title": "CS4351 Real-time Graphics" },
+            {
+              "id": 63,
+              "title": "CS5237 Computational Geometry and Applications"
+            },
+            {
+              "id": 64,
+              "title": "CS5240 Theoretical Foundation of Multimedia"
+            },
+            { "id": 65, "title": "CS5343 Advanced Computer Animation" },
+            { "id": 66, "title": "CS5346 Information Visualisation" }
+          ]
+        },
+        {
+          "name": "Computer Security",
+          "courses": [
+            {
+              "id": 67,
+              "title": "CS2107 Introduction to Information Security"
+            },
+            { "id": 68, "title": "CS3235 Computer Security" },
+            { "id": 69, "title": "CS4236 Cryptography Theory and Practice" },
+            { "id": 70, "title": "CS4230 Foundations of Modern Cryptography" },
+            { "id": 71, "title": "CS4238 Computer Security Practice" },
+            { "id": 72, "title": "CS4239 Software Security" },
+            {
+              "id": 73,
+              "title": "CS3221 Operating Systems Design and Pragmatics"
+            },
+            { "id": 74, "title": "CS4257 Algorithmic Foundations of Privacy" },
+            { "id": 75, "title": "CS4276 IoT Security" },
+            { "id": 76, "title": "CS5231 Systems Security" },
+            { "id": 77, "title": "CS5250 Advanced Operating Systems" },
+            { "id": 78, "title": "CS5321 Network Security" },
+            { "id": 79, "title": "CS5322 Database Security" },
+            { "id": 80, "title": "CS5331 Web Security" },
+            { "id": 81, "title": "CS5332 Biometric Authentication" },
+            {
+              "id": 82,
+              "title": "IFS4101 Legal Aspects of Information Security"
+            },
+            { "id": 83, "title": "IFS4102 Digital Forensics" },
+            { "id": 84, "title": "IFS4103 Penetration Testing Practice" }
+          ]
+        },
+        {
+          "name": "Database Systems",
+          "courses": [
+            { "id": 85, "title": "CS2102 Database Systems" },
+            { "id": 86, "title": "CS3223 Database Systems Implementation" },
+            {
+              "id": 87,
+              "title": "CS4221 Database Applications Design and Tuning"
+            },
+            { "id": 88, "title": "CS4224 Distributed Databases" },
+            { "id": 89, "title": "CS4225 Big Data Systems for Data Science" },
+            {
+              "id": 90,
+              "title": "CS4220 Knowledge Discovery Methods in Bioinformatics"
+            },
+            { "id": 91, "title": "CS5226 Database Tuning" },
+            { "id": 92, "title": "CS5228 Knowledge Discovery and Data Mining" },
+            { "id": 93, "title": "CS5322 Database Security" }
+          ]
+        },
+        {
+          "name": "Multimedia Information Retrieval",
+          "courses": [
+            { "id": 94, "title": "CS2108 Introduction to Media Computing" },
+            { "id": 95, "title": "CS3245 Information Retrieval" },
+            { "id": 96, "title": "CS4242 Social Media Computing" },
+            { "id": 97, "title": "CS4248 Natural Language Processing" },
+            { "id": 98, "title": "CS4347 Sound and Music Computing" },
+            { "id": 99, "title": "CS5246 Text Mining" },
+            { "id": 100, "title": "CS5241 Speech Processing" }
+          ]
+        },
+        {
+          "name": "Networking and Distributed Systems",
+          "courses": [
+            {
+              "id": 101,
+              "title": "CS2105 Introduction to Computer Networks (CFM)"
+            },
+            { "id": 102, "title": "CS3103 Computer Networks Practice" },
+            { "id": 103, "title": "CS4222 Wireless Networking" },
+            { "id": 104, "title": "CS4226 Internet Architecture" },
+            {
+              "id": 105,
+              "title": "CS4231 Parallel and Distributed Algorithms"
+            },
+            { "id": 106, "title": "CS3237 Introduction to Internet of Things" },
+            { "id": 107, "title": "CS4344 Networked and Mobile Gaming" },
+            { "id": 108, "title": "CS5223 Distributed Systems" },
+            { "id": 109, "title": "CS5224 Cloud Computing" },
+            { "id": 110, "title": "CS5229 Advanced Computer Networks" },
+            {
+              "id": 111,
+              "title": "CS5248 Systems Support for Continuous Media"
+            },
+            { "id": 112, "title": "CS5321 Network Security" }
+          ]
+        },
+        {
+          "name": "Parallel Computing",
+          "courses": [
+            { "id": 113, "title": "CS3210 Parallel Computing" },
+            {
+              "id": 114,
+              "title": "CS3211 Parallel and Concurrent Programming"
+            },
+            {
+              "id": 115,
+              "title": "CS4231 Parallel and Distributed Algorithms"
+            },
+            { "id": 116, "title": "CS4223 Multi-core Architecture" },
+            { "id": 117, "title": "CS5222 Advanced Computer Architectures" },
+            { "id": 118, "title": "CS5223 Distributed Systems" },
+            { "id": 119, "title": "CS5224 Cloud Computing" },
+            {
+              "id": 120,
+              "title": "CS5239 Computer System Performance Analysis"
+            },
+            { "id": 121, "title": "CS5250 Advanced Operating Systems" }
+          ]
+        },
+        {
+          "name": "Programming Languages",
+          "courses": [
+            { "id": 122, "title": "CS2104 Programming Language Concepts" },
+            {
+              "id": 123,
+              "title": "CS3211 Parallel and Concurrent Programming"
+            },
+            { "id": 124, "title": "CS4212 Compiler Design" },
+            {
+              "id": 125,
+              "title": "CS4215 Programming Language Implementation"
+            },
+            { "id": 126, "title": "CS3234 Logic for Proofs and Programs" },
+            { "id": 127, "title": "CS4216 Constraint Logic Programming" },
+            {
+              "id": 128,
+              "title": "CS5232 Formal Specification & Design Techniques"
+            },
+            { "id": 129, "title": "CS5214 Design of Optimising Compilers" },
+            { "id": 130, "title": "CS5215 Constraint Processing" },
+            {
+              "id": 131,
+              "title": "CS5218 Principles and Practice of Program Analysis"
+            }
+          ]
+        },
+        {
+          "name": "Software Engineering",
+          "courses": [
+            { "id": 132, "title": "CS2103/T Software Engineering (CFM)" },
+            {
+              "id": 133,
+              "title": "CS3213 Foundations of Software Engineering"
+            },
+            {
+              "id": 134,
+              "title": "CS3219 Software Engineering Principles and Patterns"
+            },
+            {
+              "id": 135,
+              "title": "CS4211 Formal Methods for Software Engineering"
+            },
+            { "id": 136, "title": "CS4218 Software Testing" },
+            { "id": 137, "title": "CS4239 Software Security" },
+            { "id": 138, "title": "CS3203 Software Engineering Project*" },
+            { "id": 139, "title": "CS3281 Thematic Systems Project I*" },
+            { "id": 140, "title": "CS3282 Thematic Systems Project II*" },
+            {
+              "id": 141,
+              "title": "CS3216 Software Development on Evolving Platforms"
+            },
+            {
+              "id": 142,
+              "title": "CS3217 Software Engineering on Modern Application Platforms"
+            },
+            { "id": 143, "title": "CS3226 Web Programming and Applications" },
+            { "id": 144, "title": "CS3234 Logic for Proofs and Programs" },
+            { "id": 145, "title": "CS5219 Automatic Software Validation" },
+            {
+              "id": 146,
+              "title": "CS5232 Formal Specification & Design Techniques"
+            },
+            { "id": 147, "title": "CS5272 Embedded Software Design" }
+          ]
+        }
+      ]
+    }
+  ]
+}
