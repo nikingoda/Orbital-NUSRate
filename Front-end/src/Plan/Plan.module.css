@@ -14,10 +14,13 @@
   align-items: center;
   padding: 20px;
   flex-shrink: 0;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   width: 1500px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
 }
 
 .searchoptions {
@@ -33,7 +36,7 @@
 
 .searchoption label {
   margin-right: 10px;
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .searchoption select {
@@ -41,9 +44,27 @@
 }
 
 .searchbutton {
-  padding: 10px 20px;
-  font-size: 16px;
+  width: 100%;
+  height: 45px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  font-size: 1em;
+  color: #333;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  transition: all 0.25s ease;
+}
+
+.searchbutton:hover {
+  transform: scale(1.1);
+  background-color: #ddd;
+}
+
+.searchbutton:active {
+  background-color: gray; 
+  border-color: gray;
 }
 
 .results {
@@ -62,4 +83,54 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.resultitem:hover {
+  transform: translateY(-5px);
+}
+
+.major {
+  background-color: #e9ecef;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.major h2 {
+  margin-bottom: 10px;
+}
+
+.track {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.track h3 {
+  margin-bottom: 10px;
+}
+
+.course-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.course-list li {
+  background-color: #f1f3f5;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.course-list li:hover {
+  background-color: #e2e6ea;
 }
