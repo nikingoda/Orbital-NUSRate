@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import planStyles from "./Plan.module.css";
 import coursesData from "./trackcourse.json";
 import NavBar from "../NavBar/NavBar";
-import { div } from "three/examples/jsm/nodes/Nodes.js";
 
 const Plan = () => {
   const [major, setMajor] = useState("");

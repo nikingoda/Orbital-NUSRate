@@ -54,9 +54,6 @@ const NavBar = () => {
             <a href="/about">ABOUT</a>
           </li>
           <li>
-            <a href="#">RATE</a>
-          </li>
-          <li>
             <a href="/contact">CONTACT</a>
           </li>
         </ul>
@@ -98,7 +95,7 @@ const NavBar = () => {
             <a href="/about">ABOUT</a>
           </li>
           <li>
-            <a href="#">RATE</a>
+            <a href="/plan">PLAN</a>
           </li>
           <li>
             <a href="/contact">CONTACT</a>
@@ -106,7 +103,7 @@ const NavBar = () => {
         </ul>
         <ul>
           <li>
-            <a href="#">ACCOUNT</a>
+            <a href="/account">ACCOUNT</a>
           </li>
           <li onClick={logOut}>
             <a className={navbarStyles.reglog} href="/login">

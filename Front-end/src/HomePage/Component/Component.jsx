@@ -43,7 +43,7 @@ function Component({ course }) {
       <h2 className={component.coursecode}>{moduleCode}</h2>
       <h3 className={component.coursename}>{title}</h3>
       <div className={component.courserating}>
-        <span>Course Rating: </span>
+        {/* <span>Course Rating: </span>
         {[1, 2, 3, 4, 5].map((star, index) => (
           <span
             key={index}
@@ -54,7 +54,7 @@ function Component({ course }) {
           >
             ★
           </span>
-        ))}
+        ))} */}
       </div>
       <p className={component.coursedescription}>{courseDescription}</p>
       <div className={component.buttons}>

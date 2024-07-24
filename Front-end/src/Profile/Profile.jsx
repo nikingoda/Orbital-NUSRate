@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Profile.module.css"; 
 import { useParams } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 
 
 const url = "https://orbital-nusrate.onrender.com";
@@ -10,7 +11,11 @@ const Profile = () => {
     "https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
   );
   const [profile, setProfile] = useState(null);
-  const { username } = useParams();
+  var { username } = useParams();
+
+  if(!username) {
+    username = JSON.parse(localStorage.getItem("loginInfo")).username;
+  }
 
   const handleAvatarUpload = (e) => {
     const file = e.target.files[0]; 
@@ -31,7 +36,7 @@ const Profile = () => {
   const fetchProfile = async (url, username) => {
     try {
       const response = await fetch(
-        `${url}/api/profile?username=${username}`,
+        `${url}/profile?username=${username}`,
         {
           method: "GET",
           headers: {
@@ -62,7 +67,7 @@ const Profile = () => {
       .then((data) => {
         if (data) {
           console.log("User data:", data);
-          setUser(data);
+          setProfile(data);
         } else {
           console.log("No user data found");
         }
@@ -75,6 +80,7 @@ const Profile = () => {
 
   return (
     <div className={styles.profileContainer}>
+      <NavBar/>
       <div className={styles.profileHeader}>
         <h1>User Profile</h1>
       </div>
@@ -104,12 +110,9 @@ const Profile = () => {
             </button>
           </div>
           <div className={styles.profileDetails}>
-            <h2>John Doe</h2>
+            <h2>{username}</h2>
             <p>
-              <strong>Username:</strong> johndoe123
-            </p>
-            <p>
-              <strong>Email:</strong> johndoe@example.com
+              <strong>Username:</strong> {username}
             </p>
             <p>
               <strong>Participation Date:</strong> January 1, 2020
