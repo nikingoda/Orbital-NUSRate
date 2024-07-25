@@ -30,7 +30,7 @@ const Profile = () => {
   };
 
   const toggleTheme = () => {
-    document.body.classList.toggle(styles.themeAlternate); 
+    document.body.classList.toggle(styles.themealternate); 
   };
 
   const fetchProfile = async (url, username) => {
@@ -79,14 +79,14 @@ const Profile = () => {
   }, [url, username]);
 
   return (
-    <div className={styles.profileContainer}>
+    <div className={styles.profilecontainer}>
       <NavBar/>
-      <div className={styles.profileHeader}>
+      <div className={styles.profileheader}>
         <h1>User Profile</h1>
       </div>
-      <div className={styles.profileBody}>
-        <div className={styles.profileLeft}>
-          <div className={styles.profilePicture}>
+      <div className={styles.profilebody}>
+        <div className={styles.profileleft}>
+          <div className={styles.profilepicture}>
             <img
               id="profile-img"
               src={profileImgSrc}
@@ -103,13 +103,13 @@ const Profile = () => {
             />
             <button
               id="set-avatar"
-              className={styles.uploadBtn}
+              className={styles.uploadbtn}
               onClick={() => document.getElementById("avatar-upload").click()}
             >
               Set Avatar
             </button>
           </div>
-          <div className={styles.profileDetails}>
+          <div className={styles.profiledetails}>
             <h2>{username}</h2>
             <p>
               <strong>Username:</strong> {username}
@@ -118,32 +118,32 @@ const Profile = () => {
               <strong>Participation Date:</strong> January 1, 2020
             </p>
           </div>
-          <div className={styles.profileActions}>
-            <button className={styles.resetPassword}>Reset Password</button>
+          <div className={styles.profilreactions}>
+            <button className={styles.resetpassword}>Reset Password</button>
             <button
               id="theme-switch"
-              className={styles.themeSwitch}
+              className={styles.themeswitch}
               onClick={toggleTheme}
             >
               Switch Theme
             </button>
           </div>
         </div>
-        <div className={styles.profileRight}>
-          <div className={styles.profileReviews}>
+        <div className={styles.profileright}>
+          <div className={styles.profilereviews}>
             <h3>Review History</h3>
             <ul>
               <li>
                 Review 1: Excellent course! Highly recommended.
-                <div className={styles.ratingBar} data-rating="5"></div>
+                <div className={styles.ratingbar} data-rating="5"></div>
               </li>
               <li>
                 Review 2: The instructor was very knowledgeable.
-                <div className={styles.ratingBar} data-rating="4"></div>
+                <div className={styles.ratingbar} data-rating="4"></div>
               </li>
               <li>
                 Review 3: Great content but could be more interactive.
-                <div className={styles.ratingBar} data-rating="3"></div>
+                <div className={styles.ratingbar} data-rating="3"></div>
               </li>
             </ul>
           </div>

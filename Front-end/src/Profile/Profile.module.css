@@ -11,7 +11,7 @@
   --bar-fill-color: #ff7900;
 }
 
-body.theme-alternate {
+body.themealternate {
   --background-color: #f4f4f4;
   --profile-bg-color: #003f7f;
   --header-bg-color: #0055a4;
@@ -34,7 +34,7 @@ body {
   overflow: hidden;
 }
 
-.profile-container {
+.profilecontainer {
   background-color: var(--profile-bg-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -44,19 +44,19 @@ body {
   height: 80%;
 }
 
-.profile-header {
+.profileheader {
   background-color: var(--header-bg-color);
   color: var(--header-text-color);
   padding: 20px;
   text-align: center;
 }
 
-.profile-body {
+.profilebody {
   display: flex;
   height: calc(100% - 60px);
 }
 
-.profile-left {
+.profileleft {
   flex: 1;
   background-color: #f9f9f9;
   padding: 20px;
@@ -69,7 +69,7 @@ body {
   align-items: center;
 }
 
-.profile-picture img {
+.profilepicture img {
   border-radius: 50%;
   width: 150px;
   height: 150px;
@@ -77,28 +77,28 @@ body {
   margin-bottom: 20px;
 }
 
-.profile-details {
+.profiledetails {
   text-align: center;
 }
 
-.profile-details h2 {
+.profiledetails h2 {
   margin: 0;
   font-size: 24px;
   color: var(--text-color);
 }
 
-.profile-details p {
+.profiledetails p {
   margin: 10px 0;
   font-size: 16px;
   color: var(--text-color);
 }
 
-.profile-actions {
+.profileactions {
   text-align: center;
   margin-top: 20px;
 }
 
-.reset-password {
+.resetpassword {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   border: none;
@@ -109,11 +109,11 @@ body {
   margin-bottom: 10px;
 }
 
-.reset-password:hover {
+.resetpassword:hover {
   background-color: var(--button-bg-color-hover);
 }
 
-.theme-switch {
+.themeswitch {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   border: none;
@@ -123,30 +123,30 @@ body {
   font-size: 16px;
 }
 
-.theme-switch:hover {
+.themeswitch:hover {
   background-color: var(--button-bg-color-hover);
 }
 
-.profile-right {
+.profileright {
   flex: 2;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
 }
 
-.profile-reviews h3 {
+.profilereviews h3 {
   margin: 0 0 10px 0;
   font-size: 20px;
   text-align: center;
   color: var(--text-color);
 }
 
-.profile-reviews ul {
+.profilereviews ul {
   list-style-type: none;
   padding: 0;
 }
 
-.profile-reviews li {
+.profilereviews li {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -160,7 +160,7 @@ body {
   color: var(--text-color);
 }
 
-.rating-bar {
+.ratingbar {
   width: 100%;
   height: 20px;
   background-color: var(--bar-bg-color);
@@ -169,7 +169,7 @@ body {
   position: relative;
 }
 
-.rating-bar::after {
+.ratingbar::after {
   content: "";
   height: 100%;
   background-color: var(--bar-fill-color);
@@ -178,4 +178,14 @@ body {
   left: 0;
   top: 0;
   transition: width 0.3s ease-in-out;
+}
+.uploadbtn {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
 }
