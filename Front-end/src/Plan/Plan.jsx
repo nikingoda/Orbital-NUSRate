@@ -83,9 +83,9 @@ const Plan = () => {
         </div>
         <div className={planStyles.results}>
           {results.map((result) => (
-            <div key={result.id} className={planStyles.resultitem}>
+            <button key={result.id} className={planStyles.resultitem}>
               {result.title}
-            </div>
+            </button>
           ))}
         </div>
       </div>
