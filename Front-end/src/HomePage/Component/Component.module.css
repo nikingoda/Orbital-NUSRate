@@ -60,14 +60,16 @@
 }
 
 .ratebutton,
-.readreviewbutton {
-  padding: 8px 16px;
+.readreviewbutton,
+.chatgroupbutton {
+  padding: 8px 10px;
   background-color: #ff7900;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 12px;
 }
 
 .ratebutton:hover,

@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import component from "./Component.module.css";
 import { useNavigate } from "react-router-dom";
+import ChatButton from "../../TelegramChat/ChatButton/ChatButton";
 
 const urlRating = "https://orbital-nusrate.onrender.com/api/submitRating";
 
@@ -66,6 +67,9 @@ function Component({ course }) {
           onClick={handleReadReview}
         >
           Read Review
+        </button>
+        <button className={component.chatgroupbutton}>
+          Group Chat
         </button>
       </div>
     </div>
