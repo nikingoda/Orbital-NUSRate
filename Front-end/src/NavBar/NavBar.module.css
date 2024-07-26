@@ -26,8 +26,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   height: 8%;
+  background: transparent;
+  border: none;
+  font-size: 22px;
 }
 
 .navbar ul {
@@ -38,17 +40,16 @@
 }
 
 .navbar a {
-  color: white;
+  color: rgb(47, 45, 45);
   text-decoration: none;
   padding: 15px;
   text-align: center;
   display: block;
-  transition: background-color 0.3s ease;
+  transition: font-size 0.3s ease;
 }
 
 .navbar a:hover {
-  background-color: #0d0d0d;
-  border-radius: 5px;
+  font-size: 25px;
 }
 
 .navbar ul li {

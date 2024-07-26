@@ -48,24 +48,30 @@ const NavBar = () => {
         </div>
         <ul>
           <li>
-            <a href="/">HOME</a>
+            <a href="/">
+              <strong>HOME</strong>
+            </a>
           </li>
           <li>
-            <a href="/about">ABOUT</a>
+            <a href="/about">
+              <strong>ABOUT</strong>
+            </a>
           </li>
           <li>
-            <a href="/contact">CONTACT</a>
+            <a href="/contact">
+              <strong>CONTACT</strong>
+            </a>
           </li>
         </ul>
         <ul>
           <li>
             <a className={navbarStyles.reglog} href="/register">
-              REGISTER
+              <strong>REGISTER</strong>
             </a>
           </li>
           <li>
             <a className={navbarStyles.reglog} href="/login">
-              LOGIN
+              <strong>LOGIN</strong>
             </a>
           </li>
         </ul>
@@ -89,25 +95,35 @@ const NavBar = () => {
         </div>
         <ul>
           <li>
-            <a href="/">HOME</a>
+            <a href="/">
+              <strong>HOME</strong>
+            </a>
           </li>
           <li>
-            <a href="/about">ABOUT</a>
+            <a href="/about">
+              <strong>ABOUT</strong>
+            </a>
           </li>
           <li>
-            <a href="/plan">PLAN</a>
+            <a href="/plan">
+              <strong>PLAN</strong>
+            </a>
           </li>
           <li>
-            <a href="/contact">CONTACT</a>
+            <a href="/contact">
+              <strong>CONTACT</strong>
+            </a>
           </li>
         </ul>
         <ul>
           <li>
-            <a href="/account">ACCOUNT</a>
+            <a href="/account">
+              <strong>ACCOUNT</strong>
+            </a>
           </li>
           <li onClick={logOut}>
             <a className={navbarStyles.reglog} href="/login">
-              LOG OUT
+              <strong>LOG OUT</strong>
             </a>
           </li>
         </ul>
