@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./Profile.module.css"; 
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
-
+import { useNavigate } from "react-router-dom";
 
 const url = "https://orbital-nusrate.onrender.com";
 const devurl = "http://localhost:8080";
@@ -11,10 +11,16 @@ const Profile = () => {
     "https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
   );
   const [profile, setProfile] = useState(null);
+  const [participationDate, setDate] = useState();
   var { username } = useParams();
 
   if(!username) {
     username = JSON.parse(localStorage.getItem("loginInfo")).username;
+  }
+
+  if(!username) {
+    window.alert("please login again");
+    useNavigate()("/");
   }
 
   const handleAvatarUpload = (e) => {
@@ -60,7 +66,6 @@ const Profile = () => {
       return undefined;
     }
   }
-  
 
   useEffect(() => {
     fetchProfile(url, username)
@@ -68,13 +73,14 @@ const Profile = () => {
         if (data) {
           console.log("User data:", data);
           setProfile(data);
+          console.log(profile);
+          setDate(data.participationDate);
         } else {
           console.log("No user data found");
         }
       })
       .catch((error) => {
         console.error("Error getting user data:", error);
-        setError(error);
       });
   }, [url, username]);
 
@@ -101,13 +107,13 @@ const Profile = () => {
               style={{ display: "none" }}
               onChange={handleAvatarUpload}
             />
-            <button
+            {/* <button
               id="set-avatar"
               className={styles.uploadbtn}
               onClick={() => document.getElementById("avatar-upload").click()}
             >
               Set Avatar
-            </button>
+            </button> */}
           </div>
           <div className={styles.profiledetails}>
             <h2>{username}</h2>
@@ -115,7 +121,7 @@ const Profile = () => {
               <strong>Username:</strong> {username}
             </p>
             <p>
-              <strong>Participation Date:</strong> January 1, 2020
+              <strong>Participation Date:</strong> {new Date(participationDate).toLocaleDateString()}
             </p>
           </div>
           <div className={styles.profilreactions}>

@@ -171,7 +171,7 @@ const ReadPage = () => {
   }, [courseCode]);
   const handleLike = async (ratingId) => {
     try {
-      await axios.post(`.../api/likeRating`, { ratingId });
+      await axios.post(`${url}/api/likeRating`, { ratingId });
       // Replace ...
       setRatings((prevRatings) =>
         prevRatings.map((rating) =>
@@ -187,7 +187,7 @@ const ReadPage = () => {
 
   const handleDislike = async (ratingId) => {
     try {
-      await axios.post(`.../api/dislikeRating`, { ratingId });
+      await axios.post(`${url}/api/dislikeRating`, { ratingId });
       // Replace ...
       setRatings((prevRatings) =>
         prevRatings.map((rating) =>
@@ -408,7 +408,7 @@ const ReadPage = () => {
               <strong>Date:</strong>{" "}
               {new Date(rating.date).toLocaleDateString()}
             </p>
-            <div className={readpageStyles.ratingactions}>
+            {/* <div className={readpageStyles.ratingactions}>
               <button
                 onClick={() => handleLike(rating._id)}
                 className={readpageStyles.likebutton}
@@ -421,7 +421,7 @@ const ReadPage = () => {
               >
                 <span>{rating.dislikes}</span> <AiFillDislike />
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>

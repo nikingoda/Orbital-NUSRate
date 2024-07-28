@@ -11,10 +11,6 @@ const linkToMongo = process.env.mongoUrl;
 
 const app = express();
 
-var corsOptions = {
-  origin: "https://orbital-nusrate-y0wt.onrender.com",
-};
-
 app.use(cors());
 
 // parse requests of content-type - application/json
@@ -89,10 +85,8 @@ async function initial() {
   }
 }
 
-console.log(linkToMongo);
-
 db.mongoose
-  .connect("mongodb+srv://ngoducanh6a01:ngoducanhNUSCS2327@cluster0.cnkccio.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+  .connect(linkToMongo)
   .then(() => {
     initial();
     console.log("Successfully connect to MongoDB.");

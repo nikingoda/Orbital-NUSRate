@@ -99,7 +99,6 @@ const HomePage = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
           className={homepageStyles.searchinput}
         />
-        {/* <CiSearch className={homepageStyles.CiSearch}/> */}
       </div>
       <div className={homepageStyles.main}>
         {currentCourses.map((course, index) => (
