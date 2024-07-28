@@ -86,7 +86,7 @@ async function initial() {
 }
 
 db.mongoose
-  .connect(linkToMongo)
+  .connect("mongodb+srv://ngoducanh6a01:ngoducanhNUSCS2327@cluster0.cnkccio.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     initial();
     console.log("Successfully connect to MongoDB.");
