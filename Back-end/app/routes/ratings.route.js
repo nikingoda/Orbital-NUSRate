@@ -1,5 +1,6 @@
 const controller = require("../controllers/ratings.controller");
-const averageRatingController = require("../controllers/getAverageRatings.controller").getAverageRating;
+const averageRatingController = require("../controllers/getRatingInfo").getAverageRating;
+const favouriteController = require("../controllers/getRatingInfo").getFavourite;
 
 module.exports = app => {
     app.use((req, res, next) => {
@@ -13,4 +14,6 @@ module.exports = app => {
     app.get("/api/ratings", controller.ratings);
 
     app.get("/api/averageRating", averageRatingController);
+
+    app.get("/api/getFavourite", favouriteController);
 }

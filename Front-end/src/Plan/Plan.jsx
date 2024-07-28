@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import planStyles from "./Plan.module.css";
 import coursesData from "./trackcourse.json";
 import NavBar from "../NavBar/NavBar";
+import { useNavigate } from "react-router-dom";
 
 const Plan = () => {
+  const navigate = useNavigate();
   const [major, setMajor] = useState("");
   const [track, setTrack] = useState("");
   const [results, setResults] = useState([]);
@@ -37,6 +39,12 @@ const Plan = () => {
     const filteredCourses = selectedTrack ? selectedTrack.courses : [];
     setResults(filteredCourses);
   };
+
+  const handleCourse = (course) => {
+    const title = course.title;
+    const courseCode = title.split(' ')[0];
+    navigate(`/course/${courseCode}`);
+  }
 
   return (
     <div className={planStyles.container}>
@@ -83,7 +91,7 @@ const Plan = () => {
         </div>
         <div className={planStyles.results}>
           {results.map((result) => (
-            <button key={result.id} className={planStyles.resultitem}>
+            <button key={result.id} className={planStyles.resultitem} onClick={() => handleCourse(result)}>
               {result.title}
             </button>
           ))}

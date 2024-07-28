@@ -14,6 +14,7 @@ const Rate = mongoose.model(
         userName: String,
         courseCode: String,
         commonRating: Number,
+        favourite: Boolean,
         difficulty: Number,
         usefulness: Number,
         workload: Number,

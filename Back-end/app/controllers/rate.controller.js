@@ -20,9 +20,7 @@ exports.rate = async (req, res) => {
             commonRating: req.body.commonRating,
             courseCode: req.body.courseCode,
             userName: username,
-            // usefulness: req.body.usefulness,
-            // difficulty: req.body.difficulty,
-            // workload: req.body.workload,
+            favourite: req.body.favourite,
             professorName: req.body.professorName,
             review: req.body.review,
             date: req.body.date

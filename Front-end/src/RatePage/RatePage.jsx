@@ -88,6 +88,7 @@ const RatePage = () => {
             userName,
             commonRating,
             review,
+            favourite,
             categoryRatings: storedRatings,
             professorName,
             date,

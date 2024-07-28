@@ -1,6 +1,20 @@
 const db = require("../models");
 const Rate = db.rate;
 
+exports.getFavourite = async (req, res) => {
+  try {
+    const courseCode = req.query.courseCode;
+    if(!courseCode) {
+      res.status(404).send({message: "Course not found!"});
+    } else {
+      const count = await Rate.countDocuments({favourite: true});
+      res.status(200).send({favourite: count});
+    }
+  } catch (err) {
+
+  }
+}
+
 exports.getAverageRating = async (req, res) => {
     try {
         const courseCode = req.query.courseCode;

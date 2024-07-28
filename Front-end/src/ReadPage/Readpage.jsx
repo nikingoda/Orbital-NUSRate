@@ -19,6 +19,7 @@ const ReadPage = () => {
   const [difficultyRating, setDifficultyRating] = useState(undefined);
   const [usefullnessRating, setUsefullnessRating] = useState(undefined);
   const [workloadRating, setWorkloadRating] = useState(undefined);
+  const [favourite, setFavourite] = useState(0);
 
   const fetchCourse = async (url, courseCode) => {
     try {
@@ -76,6 +77,34 @@ const ReadPage = () => {
     }
   };
 
+  const fetchFavourite = async (url, courseCode) => {
+    try {
+      const response = await fetch(
+        `${url}/api/getFavourite?courseCode=${courseCode}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Course found!");
+        const data = await response.json();
+        return data;
+      } else {
+        console.error("Failed to fetch course:" + response.statusText);
+        return undefined;
+      }
+    } catch (error) {
+      console.error(
+        "There was an error with the fetch operation:" + error.message
+      );
+      return undefined;
+    }
+  };
+
   useEffect(() => {
     fetchCourse(url, courseCode)
       .then((data) => {
@@ -108,6 +137,20 @@ const ReadPage = () => {
       .catch((error) => {
         console.error("Error getting course data:", error);
         setError(error);
+      });
+    
+    fetchFavourite(url, course)
+      .then((data) => {
+        if (data) {
+          console.log("Fav data: ", data);
+          setFavourite(data.favourite);
+        } else {
+          console.log("No course fav found")
+        }
+      })
+      .catch((err) => {
+        console.error("Error getting course fav data:", err);
+        setError(err);
       });
   }, [url, courseCode]);
 
@@ -250,7 +293,7 @@ const ReadPage = () => {
         <div className={readpageStyles.ratingbar}>
           {/* Replace 0 with variable */}
           <strong>There are </strong>{" "}
-          <strong className={readpageStyles.numberlove}>0</strong>
+          <strong className={readpageStyles.numberlove}>{favourite}</strong>
           <strong> people love this course </strong>
           <FaRegGrinHearts />
           <span>{readpageStyles.favoriteCount}</span>
@@ -263,9 +306,8 @@ const ReadPage = () => {
               <strong></strong> {rating.userName}
             </p>
             <p>
-              <strong>Professor: </strong> {rating.professors}
+              <strong>Professor: </strong> {rating.professorName}
             </p>
-
             {/* Overall Rating */}
             <p>
               <div className={readpageStyles.ratingbar}>
