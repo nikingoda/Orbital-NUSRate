@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import EmojiPicker from "emoji-picker-react";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
-import "./chat.css";
+import "./Chat.css";
 
 const url = "https://orbital-nusrate.onrender.com";
 const socket = io(url);
