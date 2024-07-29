@@ -38,6 +38,9 @@ function Component({ course }) {
     // change to Readpage
     navigate("/course/" + moduleCode);
   };
+  const handleGroup = () => {
+    navigate(`/chat/${moduleCode}`);
+  }
 
   return (
     <div className={component.coursecard}>
@@ -68,7 +71,7 @@ function Component({ course }) {
         >
           Read Review
         </button>
-        <button className={component.chatgroupbutton}>
+        <button className={component.chatgroupbutton} onClick={handleGroup}>
           Group Chat
         </button>
       </div>

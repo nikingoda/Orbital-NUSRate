@@ -10,6 +10,7 @@ import Plan from "./Plan/Plan";
 import "./App.css";
 import Contact from "./Contact/Contact";
 import ReadPage from "./ReadPage/Readpage";
+import Chat from "../Chat/Chat";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/plan" element={<Plan />}></Route>
         <Route path="/account" element={<Profile />}></Route>
+        <Route path="/chat" element={<Chat />}></Route>
       </Routes>
     </>
   );
