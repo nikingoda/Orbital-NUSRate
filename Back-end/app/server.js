@@ -15,7 +15,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://orbital-nusrate-y0wt.onrender.com",
+    // origin: "https://orbital-nusrate-y0wt.onrender.com",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "x-access-token"],
   },
