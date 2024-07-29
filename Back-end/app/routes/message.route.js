@@ -1,4 +1,4 @@
-const { authJwt } = require("../middlewares");
+const { authJwt } = require("../middleware");
 const controller = require("../controllers/message.controller");
 
 module.exports = app => {
