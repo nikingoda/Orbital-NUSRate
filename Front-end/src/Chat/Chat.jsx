@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import io from "socket.io-client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Chat.css";
 
 const url = "https://orbital-nusrate.onrender.com";
 const socket = io(url);
 const Chat = () => {
     const { chatCode } = useParams();
+    console.log(chatCode);
     const [text, setText] = useState("");
     const [chat, setChat] = useState(null);
     const [messages, setMessages] = useState([]);
@@ -100,7 +101,6 @@ const Chat = () => {
     const renderMessages = (messages) => (
         messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender._id === currentUser?.userID ? "own" : ""}`}>
-            <img src={renderAvatar(msg.sender.avatar)} alt="avatar" />
             <div className="texts">
               <span className="sender-name">{msg.sender.username}</span>
               <p>{msg.text}</p>

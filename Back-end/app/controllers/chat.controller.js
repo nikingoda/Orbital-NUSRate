@@ -19,10 +19,10 @@ exports.getChatInfo = async (req, res) => {
         .exec();
   
       if (!chat) {
-        const course = await Course.findOne({courseCode: chatCode}).exec();
-        if(!course) {
-            return res.status(404).send({ message: "Chat not found!" });
-        }
+        // const course = await Course.findOne({courseCode: chatCode}).exec();
+        // if(!course) {
+        //     return res.status(404).send({ message: "Chat not found!" });
+        // }
         chat = await new Chat({
             messages: [],
             chatCode: chatCode,
