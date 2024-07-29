@@ -8,6 +8,7 @@ exports.getFavourite = async (req, res) => {
       res.status(404).send({message: "Course not found!"});
     } else {
       const count = await Rate.countDocuments({courseCode: courseCode, favourite: true}).exec();
+      console.log(count);
       res.status(200).send({favourite: count});
     }
   } catch (err) {
