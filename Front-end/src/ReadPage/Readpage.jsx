@@ -139,7 +139,7 @@ const ReadPage = () => {
         setError(error);
       });
     
-    fetchFavourite(url, course)
+    fetchFavourite(url, courseCode)
       .then((data) => {
         if (data) {
           console.log("Fav data: ", data);
