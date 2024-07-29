@@ -40,6 +40,8 @@ require("./routes/user.routes")(app);
 require("./routes/course.route")(app);
 require("./routes/rate.route")(app);
 require("./routes/ratings.route")(app);
+require("./routes/chat.route")(app);
+require("./routes/message.route")(app);
 
 // Endpoint to serve courses data
 app.get("/api/course", (req, res) => {
