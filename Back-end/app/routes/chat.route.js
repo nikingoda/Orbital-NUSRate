@@ -10,5 +10,5 @@ module.exports = app => {
       next();
     });
   
-    app.get("/api/chats/:chatCode", [authJwt.verifyToken], controller.getChatInfo);
+    app.get("/api/chats", [authJwt.verifyToken], controller.getChatInfo);
   };

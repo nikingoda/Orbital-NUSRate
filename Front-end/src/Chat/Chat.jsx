@@ -23,8 +23,8 @@ const Chat = () => {
         };
     }, []);
     
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("loginInfo"));
+    useEffect(async () => {
+        const user = await JSON.parse(localStorage.getItem("loginInfo"));
         setCurrentUser(user);
         if (!user) {
           navigate("/login");
@@ -111,7 +111,7 @@ const Chat = () => {
     );
 
     return (
-        <div className="chat custom-chat-background">
+        <div className="chat">
           <div className="top">
             <div className="userd">
               <div className="texts">
@@ -133,7 +133,6 @@ const Chat = () => {
             />
             <button className="sendButton" onClick={handleSendMessage}>Send</button>
           </div>
-    
     
         </div>
     );

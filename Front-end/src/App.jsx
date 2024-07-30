@@ -27,7 +27,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/plan" element={<Plan />}></Route>
         <Route path="/account" element={<Profile />}></Route>
-        <Route path="/chat" element={<Chat />}></Route>
+        <Route path="/chat/:chatCode" element={<Chat />}></Route>
       </Routes>
     </>
   );
