@@ -107,13 +107,13 @@ const Profile = () => {
               style={{ display: "none" }}
               onChange={handleAvatarUpload}
             />
-            {/* <button
+            <button
               id="set-avatar"
               className={styles.uploadbtn}
               onClick={() => document.getElementById("avatar-upload").click()}
             >
               Set Avatar
-            </button> */}
+            </button>
           </div>
           <div className={styles.profiledetails}>
             <h2>{username}</h2>
@@ -125,7 +125,7 @@ const Profile = () => {
             </p>
           </div>
           <div className={styles.profilreactions}>
-            <button className={styles.resetpassword}>Reset Password</button>
+            {/* <button className={styles.resetpassword}>Reset Password</button> */}
             <button
               id="theme-switch"
               className={styles.themeswitch}
@@ -135,7 +135,7 @@ const Profile = () => {
             </button>
           </div>
         </div>
-        <div className={styles.profileright}>
+        {/* <div className={styles.profileright}>
           <div className={styles.profilereviews}>
             <h3>Review History</h3>
             <ul>
@@ -153,7 +153,7 @@ const Profile = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
