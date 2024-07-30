@@ -6,7 +6,7 @@ const User = db.user;
 exports.getChatInfo = async (req, res) => {
     try {
     //   const chatId = req.params.chatId;
-      const chatCode = req.params.chatCode;
+      const chatCode = req.query.chatCode;
       var chat = await Chat.findOne({chatCode: chatCode})
         .populate("members", "username")
         .populate({
