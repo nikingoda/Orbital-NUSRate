@@ -8,7 +8,6 @@ exports.getChatInfo = async (req, res) => {
     //   const chatId = req.params.chatId;
       const chatCode = req.query.chatCode;
       var chat = await Chat.findOne({chatCode: chatCode})
-        .populate("members", "username")
         .populate({
           path: "messages",
           populate: {
