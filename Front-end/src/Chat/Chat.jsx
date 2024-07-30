@@ -3,6 +3,7 @@ import axios from "axios";
 import io from "socket.io-client";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Chat.css";
+import NavBar from "../NavBar/NavBar";
 
 const url = "https://orbital-nusrate.onrender.com";
 const socket = io(url);
@@ -57,7 +58,6 @@ const Chat = () => {
           setMessages((prevMessages) => [...prevMessages, message]);
           socket.emit('updateChatList');
         });
-    
         return () => {
           socket.off('message');
         };
@@ -111,7 +111,8 @@ const Chat = () => {
     );
 
     return (
-        <div className="chat">
+        <div className="chat custom-chat-background">
+          <NavBar/>
           <div className="top">
             <div className="userd">
               <div className="texts">
