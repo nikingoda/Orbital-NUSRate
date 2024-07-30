@@ -27,6 +27,7 @@ exports.getChatInfo = async (req, res) => {
             messages: [],
             chatCode: chatCode,
         }).save();
+        console(chat);
       }
       res.status(200).send(chat);
     } catch (err) {
