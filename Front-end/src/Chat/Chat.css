@@ -88,6 +88,15 @@
   gap: 2px;
 }
 
+.chat .mid .message .texts p {
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
 .chat .mid .message .texts span {
   font-size: 12px;
   color: #ddd;
@@ -108,7 +117,7 @@
 }
 
 .chat .bot .sendButton {
-  background-color: rgba(56, 122, 215, 0.75);
+  background-color: rgba(221, 104, 26, 0.75);
   color: #fff;
   padding: 10px 20px;
   border: none;
