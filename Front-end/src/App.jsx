@@ -6,6 +6,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import IntroPage from "./IntroPage/IntroPage";
 import Profile from "./Profile/Profile";
 import Plan from "./Plan/Plan";
+import Reset from "./Reset/Reset";
 
 import "./App.css";
 import Contact from "./Contact/Contact";
@@ -28,6 +29,7 @@ function App() {
         <Route path="/plan" element={<Plan />}></Route>
         <Route path="/account" element={<Profile />}></Route>
         <Route path="/chat/:chatCode" element={<Chat />}></Route>
+        <Route path="/Reset" element={<Reset />}></Route>
       </Routes>
     </>
   );

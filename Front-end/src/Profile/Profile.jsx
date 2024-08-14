@@ -35,6 +35,10 @@ const Profile = () => {
     }
   };
 
+  const toReset = () => {
+    useNavigate()("/Reset");
+  }
+
   const toggleTheme = () => {
     document.body.classList.toggle(styles.themealternate); 
   };
@@ -125,7 +129,7 @@ const Profile = () => {
             </p>
           </div>
           <div className={styles.profilreactions}>
-            {/* <button className={styles.resetpassword}>Reset Password</button> */}
+            <button className={styles.resetpassword} onClick={toReset}>Reset Password</button>
             <button
               id="theme-switch"
               className={styles.themeswitch}

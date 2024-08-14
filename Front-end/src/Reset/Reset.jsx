@@ -11,6 +11,7 @@ const Reset = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -31,6 +32,7 @@ const Reset = () => {
         body: JSON.stringify({
           email,
           password,
+          oldPassword
         }),
       });
 
@@ -38,7 +40,7 @@ const Reset = () => {
 
       if (res.status === 200) {
         setSuccessMessage("Password reset successful!");
-        navigate("/login");
+        navigate("/");
       } else {
         setError("Password reset failed! " + data.message);
       }
@@ -62,6 +64,16 @@ const Reset = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <FaLock className={resetStyles.icon} />
+          </div>
+          <div className={resetStyles.inputbox}>
+            <input
+              type="old-password"
+              placeholder="Old Password"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
               required
             />
             <FaLock className={resetStyles.icon} />

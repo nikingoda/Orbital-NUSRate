@@ -113,16 +113,14 @@ db.mongoose
   io.on('connection', (socket) => {
     console.log('New client connected');
 
-    socket.on('joinChat', (chatCode) => {
+    socket.on('join', (chatCode) => {
       socket.join(chatCode);
       console.log(`Client joined chat ${chatCode}`);
     });
   
     socket.on('sendMessage', async ({ chatId, message }) => {
       try {
-        //get the sender details
-        const user = await User.findById(message.sender);
-    
+        const user = await User.findById(message.sender).exec(); //sender details
   
         const fullMessage = {
           ...message,
@@ -132,12 +130,12 @@ db.mongoose
           }
         };
     
-        // Save the message to the database
-        const chat = await Chat.findById(chatId);
+        // Save message to database
+        const chat = await Chat.findById(chatId).exec();
         chat.messages.push(fullMessage);
         await chat.save();
     
-        // Emit the full message
+        // Emit full message
         io.to(chatId).emit('message', fullMessage);
         io.emit('updateChatList');
       } catch (error) {

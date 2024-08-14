@@ -78,3 +78,21 @@ exports.signin = async (req, res) => {
         return res.status(500).send({ message: err.message });
     }
 }
+
+exports.reset = async (req, res) => {
+    try {
+        let user = await User.findOne({email: req.body.email}).exec();
+        if (!user) {
+            res.status(401).send({message: "Email not found!"});
+            return;
+        }
+        if(!bcrypt.compareSync(req.body.oldPassword, user.password)) {
+            res.status(401).send({message: "Incorrect password!"});
+            return;
+        }
+        user.password = req.body.password;
+        await user.save();
+    } catch(err) {
+        return res.status(500).send({ message: err.message });
+    }
+}

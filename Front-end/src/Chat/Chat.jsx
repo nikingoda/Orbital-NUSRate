@@ -48,10 +48,10 @@ const Chat = () => {
     
     useEffect(() => {
         if (chatCode) {
-          socket.emit('joinChat', chatCode);
+          socket.emit('join', chatCode);
           fetchChat();
         }
-    }, [chatCode]);
+    }, []);
 
     useEffect(() => {
         socket.on('message', (message) => {
@@ -61,7 +61,7 @@ const Chat = () => {
         return () => {
           socket.off('message');
         };
-    }, []);
+    }, [messages]);
 
     const handleSendMessage = async () => {
         if (text.trim() === "") return;
@@ -114,17 +114,17 @@ const Chat = () => {
         <div className="chat custom-chat-background">
           <NavBar/>
           <div className="top">
-            <div className="userd">
+            <div className="user">
               <div className="texts">
                 <span className="chat-code">{chat?.chatCode}</span>
               </div>
             </div>
           </div>
-          <div className="center">
+          <div className="mid">
             {renderMessages(messages)}
             <div ref={endRef}></div>
           </div>
-          <div className="bottom">
+          <div className="bot">
             <input
               type="text"
               placeholder="Type a message..."
