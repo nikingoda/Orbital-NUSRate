@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const url = "https://orbital-nusrate.onrender.com";
 const devurl = "http://localhost:8080";
 const Profile = () => {
+  const navigate = useNavigate();
   const [profileImgSrc, setProfileImgSrc] = useState(
     "https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
   );
@@ -36,7 +37,7 @@ const Profile = () => {
   };
 
   const toReset = () => {
-    useNavigate()("/Reset");
+    navigate("/Reset");
   }
 
   const toggleTheme = () => {
