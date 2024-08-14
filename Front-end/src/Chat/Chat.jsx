@@ -51,7 +51,7 @@ const Chat = () => {
           socket.emit('join', chatCode);
           fetchChat();
         }
-    }, []);
+    }, [messages]);
 
     useEffect(() => {
         socket.on('message', (message) => {
