@@ -21,7 +21,7 @@ const Profile = () => {
 
   if(!username) {
     window.alert("please login again");
-    useNavigate()("/");
+    navigate("/login");
   }
 
   const handleAvatarUpload = (e) => {
