@@ -90,7 +90,7 @@ exports.reset = async (req, res) => {
             res.status(401).send({message: "Incorrect password!"});
             return;
         }
-        user.password = req.body.password;
+        user.password = bcrypt.hashSync(req.body.password, 10);
         await user.save();
     } catch(err) {
         return res.status(500).send({ message: err.message });
